@@ -1,81 +1,198 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import LensOrbitGlobe from "../illustrations/LensOrbitGlobe";
-import { CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-const benefits = [
-  "Real-time threat correlation across all data sources",
-  "Automated investigation and root cause analysis",
-  "Built-in playbooks for 200+ threat scenarios",
-  "Bi-directional integrations with 300+ tools",
-  "Single agent, single console — no tool sprawl",
+const oneEvidenceFeatures = [
+  "Single pane of glass for all compliance evidence",
+  "Automated evidence collection from 50+ connectors",
+  "AI-assisted gap analysis and remediation guidance",
+  "Auditor-ready reporting in days, not months",
+  "Continuous monitoring with real-time compliance posture",
 ];
+
+const aiDlpFeatures = [
+  "Deep content inspection across 200+ file types",
+  "Behavioral analytics to detect insider threats",
+  "Policy enforcement across cloud, endpoint, and email",
+  "Zero-trust data classification and labeling",
+  "Forensic-grade incident investigation and reporting",
+];
+
+function ProductSection({
+  id,
+  platform,
+  tagline,
+  description,
+  features,
+  accentColor,
+  colorClasses,
+  reversed,
+  inView,
+  delay,
+}: any) {
+  return (
+    <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${reversed ? "" : ""}`}>
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, x: reversed ? 30 : -30 }}
+        animate={inView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
+        className={reversed ? "lg:order-2" : ""}
+      >
+        <span className={`inline-block text-xs font-semibold tracking-widest uppercase mb-3 ${colorClasses.text}`}>
+          {platform}
+        </span>
+        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">{tagline}</h3>
+        <p className="text-slate-400 text-base leading-relaxed mb-7">{description}</p>
+        <ul className="space-y-3 mb-8">
+          {features.map((f: string) => (
+            <li key={f} className="flex items-start gap-3 text-slate-300 text-sm">
+              <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${colorClasses.check}`} />
+              {f}
+            </li>
+          ))}
+        </ul>
+        <motion.a
+          href={`#${id}`}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+          className={`inline-flex items-center gap-2 px-5 py-2.5 ${colorClasses.button} text-white font-medium rounded-md text-sm transition-all duration-200`}
+        >
+          Learn about {platform} <ArrowRight className="w-4 h-4" />
+        </motion.a>
+      </motion.div>
+
+      {/* Architecture diagram */}
+      <motion.div
+        initial={{ opacity: 0, x: reversed ? -30 : 30 }}
+        animate={inView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.75, delay: delay + 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className={`${reversed ? "lg:order-1" : ""} p-8 rounded-2xl border ${colorClasses.border} bg-white/2`}
+      >
+        <div className={`text-xs font-semibold tracking-widest uppercase mb-5 ${colorClasses.text}`}>
+          {platform} Architecture
+        </div>
+        <div className="space-y-3">
+          {platform === "One Evidence" ? (
+            <>
+              <ArchLayer label="Evidence Sources" items={["Cloud", "SaaS", "On-Prem", "APIs"]} color={colorClasses.layerBg} />
+              <ArchArrow />
+              <ArchLayer label="Collection Engine" items={["Auto-collect", "Normalize", "Tag", "Store"]} color={colorClasses.layerBg} />
+              <ArchArrow />
+              <ArchLayer label="Compliance Mapping" items={["ISO 27001", "SOC 2", "GDPR", "HIPAA"]} color={colorClasses.layerBg} />
+              <ArchArrow />
+              <ArchLayer label="Audit Portal" items={["Reports", "Dashboard", "Export"]} color={colorClasses.layerBg} />
+            </>
+          ) : (
+            <>
+              <ArchLayer label="Data Sources" items={["Email", "Cloud Storage", "Endpoints", "Network"]} color={colorClasses.layerBg} />
+              <ArchArrow />
+              <ArchLayer label="AI Classification" items={["Detect", "Classify", "Score Risk", "Label"]} color={colorClasses.layerBg} />
+              <ArchArrow />
+              <ArchLayer label="Policy Engine" items={["Block", "Alert", "Quarantine", "Audit"]} color={colorClasses.layerBg} />
+              <ArchArrow />
+              <ArchLayer label="Incident Response" items={["Investigate", "Remediate", "Report"]} color={colorClasses.layerBg} />
+            </>
+          )}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function ArchLayer({ label, items, color }: { label: string; items: string[]; color: string }) {
+  return (
+    <div className={`${color} rounded-lg p-3`}>
+      <div className="text-xs text-slate-400 mb-2 font-medium">{label}</div>
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((item) => (
+          <span key={item} className="text-xs text-slate-300 bg-white/8 rounded px-2 py-0.5">{item}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ArchArrow() {
+  return (
+    <div className="flex justify-center">
+      <div className="w-px h-4 bg-white/15" />
+    </div>
+  );
+}
 
 export default function LensOrbit() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-80px" });
+  const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
-    <section id="solutions" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0d1629] to-[#0a0f1e]" />
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+    <section id="platforms" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080d1a] to-[#0a1120]" />
+      <div className="divider-gradient absolute top-0 left-0 right-0" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Globe viz */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="order-2 lg:order-1"
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
+        <div className="text-center mb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            className="text-blue-400 text-xs font-semibold tracking-widest uppercase mb-3"
           >
-            <LensOrbitGlobe />
-          </motion.div>
-
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="order-1 lg:order-2"
+            Our Platforms
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 18 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.08 }}
+            className="text-3xl sm:text-4xl font-bold text-white mb-4"
           >
-            <p className="text-blue-400 text-sm font-medium tracking-widest uppercase mb-3">
-              Unified Security Fabric
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5 leading-tight">
-              One platform.<br />
-              <span className="gradient-text-blue">Every threat vector.</span>
-            </h2>
-            <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-              SentinelAI weaves together endpoint, network, cloud, identity,
-              and application security into a single mesh. No gaps. No silos.
-              Just comprehensive visibility and control.
-            </p>
+            Two platforms. <span className="gradient-text-blue">One security posture.</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.16 }}
+            className="text-slate-400 max-w-2xl mx-auto"
+          >
+            Whether you need to prove compliance or prevent data loss, APEXLyn has a
+            purpose-built platform that integrates seamlessly with your existing stack.
+          </motion.p>
+        </div>
 
-            <ul className="space-y-3.5 mb-10">
-              {benefits.map((b, i) => (
-                <motion.li
-                  key={b}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
-                  className="flex items-start gap-3 text-slate-300 text-sm"
-                >
-                  <CheckCircle2 className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
-                  {b}
-                </motion.li>
-              ))}
-            </ul>
-
-            <motion.a
-              href="#cta"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-lg shadow-[0_0_20px_rgba(59,130,246,0.25)] transition-all duration-200"
-            >
-              See full platform →
-            </motion.a>
-          </motion.div>
+        <div className="space-y-24">
+          <ProductSection
+            id="one-evidence"
+            platform="One Evidence"
+            tagline="Your single source of compliance truth"
+            description="One Evidence aggregates security evidence from across your entire technology stack, maps it to compliance frameworks automatically, and gives auditors exactly what they need — reducing assessment time by up to 80%."
+            features={oneEvidenceFeatures}
+            reversed={false}
+            inView={inView}
+            delay={0.2}
+            colorClasses={{
+              text: "text-blue-400",
+              check: "text-blue-400",
+              border: "border-blue-500/20",
+              button: "bg-blue-600 hover:bg-blue-500",
+              layerBg: "bg-blue-500/8",
+            }}
+          />
+          <ProductSection
+            id="ai-dlp"
+            platform="AI DLP"
+            tagline="Stop data loss before it happens"
+            description="AI DLP uses machine learning to classify, monitor, and protect sensitive data wherever it lives or moves — cloud, email, endpoint, or network — enforcing policies in real time without disrupting legitimate workflows."
+            features={aiDlpFeatures}
+            reversed={true}
+            inView={inView}
+            delay={0.25}
+            colorClasses={{
+              text: "text-orange-400",
+              check: "text-orange-400",
+              border: "border-orange-500/20",
+              button: "bg-orange-600 hover:bg-orange-500",
+              layerBg: "bg-orange-500/8",
+            }}
+          />
         </div>
       </div>
     </section>

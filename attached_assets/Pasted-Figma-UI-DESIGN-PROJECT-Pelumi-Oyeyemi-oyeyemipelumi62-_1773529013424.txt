@@ -1,0 +1,363 @@
+Figma UI DESIGN PROJECT
+
+Pelumi Oyeyemi <oyeyemipelumi62@gmail.com>
+Tue, Feb 24, 12:05 PM
+to klintmedia0611@gmail.com
+
+Figma Design Brief – Cybersecurity Company Website
+Project Overview
+We are designing a high-authority corporate cybersecurity website for a startup building two major platforms: One Evidence and AI DLP.
+
+The goal is to create a website that looks like a top-tier enterprise cybersecurity company, not a typical startup.
+
+The website will later be developed using Next.js and deployed on Amazon Web Services (Sydney region).
+
+Performance, security, and clean UI are extremely important.
+
+Design Goals
+The design must feel:
+
+• Enterprise-level
+• Secure and trustworthy
+• Clean and minimal
+• High authority
+• Tech-focused
+• Modern but not flashy
+• Professional like a big cybersecurity firm
+
+Avoid:
+• Startup/SaaS landing page look
+• Heavy animations
+• Overly colorful design
+• Cluttered layouts
+
+Style direction:
+Think Cybersecurity / Enterprise Tech Company UI.
+
+Pages to Design (6 Total)
+1. Home Page
+Purpose: Establish authority and explain what the company does quickly.
+
+Sections:
+
+Hero Section
+• Strong headline
+• Short description
+• CTA button
+• Background tech visual or pattern
+
+Trust Indicators
+• Security credibility
+• Enterprise-grade messaging
+• Possibly certifications or compliance icons
+
+Platform Overview
+• One Evidence
+• AI DLP
+
+Each should include:
+• Short description
+• Feature highlights
+• CTA
+
+Why Choose Us
+• Security
+• Compliance
+• Reliability
+• Data sovereignty
+
+Trust Center Preview
+• Link to compliance resources
+
+Call To Action
+• Contact
+• Request demo
+
+Footer
+• Navigation
+• Contact
+• Company info
+
+2. About Page
+Purpose: Build trust and credibility.
+
+Sections:
+• Company mission
+• Vision
+• Leadership or company story
+• Security philosophy
+• Company values
+
+Optional:
+Future team section.
+
+3. Platforms Page
+Purpose: Showcase the products.
+
+Two main products:
+
+One Evidence
+AI DLP
+
+Each product section should include:
+• Overview
+• Key capabilities
+• Use cases
+• Security benefits
+• Visual diagram or UI illustration
+
+Design must feel like enterprise product architecture.
+
+4. Trust Center Page
+Very important page.
+
+This builds trust with enterprise clients.
+
+Sections:
+
+Security Overview
+Compliance Frameworks
+Whitepapers
+Privacy Commitment
+Infrastructure & Data Security
+Data Sovereignty
+
+Design style:
+Very professional and structured.
+
+Think:
+Enterprise documentation portal.
+
+5. Contact Page
+Simple and professional.
+
+Sections:
+• Contact form
+• Business email
+• Short company message
+• CTA for partnerships
+
+Note:
+Form will connect to AWS later.
+
+6. Careers Page
+Simple careers landing page.
+
+Sections:
+• Company culture
+• Why join us
+• Open roles list
+• Apply CTA
+
+Design should allow:
+Easy addition of job listings later.
+
+Design System Requirements
+The designer should also create:
+
+Typography system
+Color usage rules
+Button styles
+Input fields
+Cards
+Icons
+Spacing system
+Grid layout
+
+This helps development later.
+
+Components to Design
+Must include reusable components:
+
+Navbar
+Footer
+Buttons
+Cards
+Platform feature blocks
+CTA sections
+Forms
+Section headers
+Trust badges
+
+Design Style Direction
+Recommended look:
+
+Dark + light enterprise hybrid style.
+
+Typical colors:
+• Deep blue
+• Dark navy
+• White
+• Light grey
+• Subtle gradients
+
+Cybersecurity visual cues:
+• Network patterns
+• Data flow visuals
+• Security shield elements
+• Abstract tech graphics
+
+But keep it minimal and clean.
+
+UX Expectations
+The layout should feel:
+
+Fast
+Structured
+Logical
+Professional
+Not marketing-heavy
+
+Important:
+The client wants high performance, so design should be lightweight.
+
+Technical Constraints (Important)
+Design must support:
+
+Static website architecture
+Fast loading speed
+Simple animations only
+
+Allowed interactions:
+Hover effects
+Subtle transitions
+Button animations
+
+Avoid:
+Heavy animations
+Complex motion
+Large video backgrounds
+
+Figma Deliverables Required
+Your friend must deliver:
+
+Complete desktop design for all pages
+Tablet responsive layout
+Mobile responsive layout
+Component system
+Style guide page
+Export-ready assets
+
+And:
+
+Organized Figma file.
+
+Structure example:
+
+Pages
+Design System
+Components
+Desktop Layouts
+Mobile Layouts
+
+Layout Quality Standard
+The design must look similar to:
+
+Enterprise cybersecurity companies.
+
+Meaning:
+
+Clean grid alignment
+Strong typography hierarchy
+Good spacing
+Professional UI
+
+Not generic templates.
+
+What the Client Will Approve First
+Before development starts, the client will review:
+
+Homepage design
+Design direction
+Typography
+Layout structure
+
+So the homepage must look very strong.
+
+This is critical.
+
+Suggested Timeline for Figma
+Day 1–2
+Wireframe structure
+
+Day 3–4
+High fidelity homepage
+
+Day 5
+Remaining pages
+
+Day 6
+Revisions
+
+Important Note For Designer
+This design must convince the client that:
+
+This company looks like a serious cybersecurity firm.
+
+If the homepage is weak, the project could get delayed.
+
+
+Pelumi Oyeyemi <oyeyemipelumi62@gmail.com>
+Tue, Feb 24, 12:07 PM
+to klintmedia0611@gmail.com
+
+Quick update on the cybersecurity website project. The client has not provided the full brand guidelines yet. For now, they only mentioned that they have a logo and a basic color palette, which they will send later.
+
+So before starting the full high-fidelity design in Figma, it would be better to:
+• Focus first on the layout structure and wireframe direction
+• Keep the design flexible so we can easily adjust colors, typography, and branding once the client sends the assets
+• Use a clean enterprise cybersecurity style (minimal, corporate, high-authority look)
+
+Pages we need to design: Home, About, Platforms, Trust Center, Contact, and Careers.
+
+As soon as the client sends the logo, colors, and content, I’ll forward everything to you immediately so you can finalize the UI.
+
+
+Pelumi Oyeyemi <oyeyemipelumi62@gmail.com>
+Attachments
+Tue, Feb 24, 9:45 PM
+to klintmedia0611@gmail.com
+
+Hello Mr Clinton, quick update about the website project — the scope has changed and expanded after the client sent the final structure document.
+
+The project is no longer just the basic 6 pages. The client wants a more modular “Tech Giant” style platform website with additional sections and templates.
+
+You’ll still design the main pages, but now we also need:
+
+Main Pages:
+• Home
+• Platforms (modular structure)
+• Industries (template-based pages like Healthcare, Legal, etc.)
+• Resources (whitepapers template)
+• Pricing page
+• Trust Center
+• Company section (About, Careers, Contact)
+
+Additional Designs Needed:
+• A dedicated landing page for “Test Your Security State” (lead capture page)
+• SaaS-style dashboard UI mockups for Track and Lens
+• Dynamic templates for Industries and Resources pages
+• Premium SaaS pricing layout (Flow, Verify, Vault tiers)
+
+Important:
+The client is positioning the company like a high-end enterprise tech firm, so the design must look very polished and structured — similar to a big cybersecurity platform, not a startup.
+
+Also, the brand guidelines are not fully ready yet, so we’ll start with layout, structure, and design system first, then adjust when the logo assets and final brand details arrive.
+
+I’ll send you the full structure document the client shared so you can understand the architecture before starting.
+
+ One attachment
+  •  Scanned by Gmail
+
+Pelumi Oyeyemi <oyeyemipelumi62@gmail.com>
+Tue, Feb 24, 10:20 PM
+to klintmedia0611@gmail.com
+
+To ensure we capture the right data and maintain that "Tech Giant" authority, I’ve finalized the lead capture fields for the "Test Your Security State" landing page. Please include the following in a clean, professional form layout: 1. Core Contact Fields: Full Name Company Name Industry (Dropdown matching our sitemap: Healthcare, Legal, Insurance, etc.) Work Email (Please add a subtle validation note: “Note: To ensure data sovereignty, we prioritize requests from verified corporate domains.”) Phone Number 2. Qualification & Intent Fields (Dropdowns): Company Size: (Options: 1–10, 11–50, 51–200, 201+) Primary Compliance Goal: (Options: ASD Essential Eight Maturity, AI Data Leak Prevention (DLP), AI Policy & Governance, General IT Risk Assessment) Project Timeline: (Options: Immediate, Within 30 Days, Researching for Future) 3. Pricing Page Layout: Please ensure the layout makes it very easy to compare the features between Flow, Verify, and Vault. Each tier should feel like a significant step up in "Security Power" and "Evidence Depth." Even though the final price is "On Request," the design should scream Enterprise Grade. I'll leave you to the deep work on the Figma system now. I’m really looking forward to seeing the first preview of the page hierarchy, these specific form fields, and the dashboard concepts!
+
+Pelumi Oyeyemi <oyeyemipelumi62@gmail.com>
+Attachments
+Thu, Feb 26, 4:26 PM
+to klintmedia0611@gmail.com
+
+Hi Isaac, Attached are the logo assets for the Figma high-fidelity phase. I’ve included the AI and EPS (Vector) files, along with a Transparent PNG. Logo & Favicon Specifications: Main Logo: Please use the AI/EPS vector files for the main site elements to ensure perfect crispness on all screen sizes. Favicon Assets: I am providing a full range of sizes for the Compass/Needle element: Small (32x32, 64x64): For standard browser tabs. High-Res (128, 256, 512, 1024): Please use these for Apple Touch Icons and mobile home-screen shortcuts to ensure the brand looks premium on retina displays.
