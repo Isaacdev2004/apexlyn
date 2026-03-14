@@ -1,0 +1,408 @@
+Project Overview
+
+Develop a modern enterprise SaaS marketing website with smooth motion, professional UI polish, and subtle micro-interactions similar to the design quality of:
+
+Cloudflare
+
+CrowdStrike
+
+The site must look premium, clean, technical, and modern.
+
+Key principles:
+
+Smooth motion design
+
+Subtle micro-interactions
+
+Clean SVG illustrations
+
+Fast performance
+
+Mobile responsiveness
+
+Production-ready structure
+
+Technology Stack
+
+Build using:
+
+Framework
+
+Next.js 14 (App Router)
+
+Styling
+
+TailwindCSS
+
+Animations
+
+Framer Motion
+
+Icons
+
+Heroicons or Lucide
+
+Illustrations
+
+Custom SVG components
+
+Deployment
+
+Vercel-ready project
+
+Project Folder Structure
+/app
+  /components
+  /sections
+  /animations
+  /ui
+  /illustrations
+  /lib
+
+/app/page.tsx
+
+/components
+Navbar.tsx
+Footer.tsx
+Button.tsx
+Card.tsx
+
+/sections
+Hero.tsx
+Features.tsx
+EvidenceGauge.tsx
+LensOrbit.tsx
+CTA.tsx
+
+/illustrations
+Gauge.tsx
+LensOrbitGlobe.tsx
+
+/styles
+globals.css
+Global Design Style
+
+Use a modern SaaS style:
+
+Typography:
+
+Inter or Geist font
+
+Spacing:
+
+Generous whitespace
+
+Large section padding
+
+Colors:
+
+Dark blue / deep navy background
+
+Light text
+
+Gradient accents
+
+Example palette:
+
+Primary: #0f172a
+Secondary: #1e293b
+Accent: #3b82f6
+Text: #e2e8f0
+Highlight: #22c55e
+Navigation Bar
+
+Sticky navbar with subtle animation.
+
+Features:
+
+Logo left
+
+Navigation links center
+
+CTA button right
+
+Interactions:
+
+Hover animation:
+
+underline slide animation
+
+smooth transition
+
+Scroll behavior:
+
+slight background blur
+
+shadow appears
+
+Hero Section
+
+Structure:
+
+Left side:
+
+Headline
+
+Subtext
+
+CTA buttons
+
+Right side:
+
+animated illustration
+
+Headline style:
+
+Large bold enterprise typography.
+
+Example layout:
+
+Headline
+Subheadline
+Primary Button
+Secondary Button
+
+Animations:
+
+Hero reveal animation:
+
+fade up
+
+slight delay
+
+Evidence Gauge Component
+
+This is a key animated feature requested by the client.
+
+Design:
+
+A semicircle gauge with pointer.
+
+Behavior:
+
+Pointer animation:
+
+rotates from left to target value
+
+smooth motion
+
+duration: 4–5 seconds
+
+easing: ease-in-out
+
+Requirements:
+
+pivot from exact center
+
+no jitter
+
+stable rotation
+
+Implementation suggestion:
+
+Use SVG + Framer Motion.
+
+Lens Orbit Globe Illustration
+
+This is another core feature.
+
+Design:
+
+Central globe.
+
+Around the globe:
+
+orbiting labels
+
+circular motion path
+
+Animation rules:
+
+Orbit animation:
+
+smooth circular path
+
+slow movement
+
+Labels:
+
+remain horizontal
+
+do not rotate upside down
+
+Add subtle pulse glow around globe.
+
+Feature Cards Section
+
+Grid of cards (3 or 4 columns).
+
+Each card includes:
+
+icon
+
+title
+
+description
+
+Micro-interaction:
+
+Card hover:
+
+translateY(-4px)
+scale(1.02)
+shadow increase
+
+Transition time:
+300ms.
+
+Micro-Interaction System
+
+This must exist across the entire site.
+
+Buttons
+
+Hover:
+
+arrow icon shifts right
+
+slight color change
+
+Links
+
+Underline animation:
+
+expands from left to right.
+
+Cards
+
+Lift effect:
+
+translateY(-3px)
+Scroll reveal
+
+Each section should:
+
+fade in
+
+slide up
+
+Use Framer Motion viewport animation.
+
+Section Structure
+
+Homepage sections:
+
+1 Hero
+2 Features
+3 Evidence Gauge
+4 Lens Orbit Visualization
+5 Benefits
+6 Testimonials
+7 Call to Action
+8 Footer
+
+Call To Action Section
+
+Centered layout.
+
+Content:
+
+Headline
+Supporting text
+Primary CTA button.
+
+Background:
+
+Subtle gradient or grid pattern.
+
+Footer
+
+Footer contains:
+
+Columns:
+
+Product
+
+Resources
+
+Company
+
+Social
+
+Include:
+
+copyright
+
+privacy
+
+terms
+
+Performance Requirements
+
+Optimize for:
+
+Lighthouse score above 90
+
+fast loading
+
+responsive layout
+
+Responsive Design
+
+Breakpoints:
+
+Desktop
+Tablet
+Mobile
+
+Mobile adjustments:
+
+stacked sections
+
+simplified animations
+
+full width buttons
+
+Accessibility
+
+Include:
+
+aria labels
+
+keyboard navigation
+
+semantic HTML
+
+Animation Principles
+
+All animations must follow:
+
+smooth
+
+subtle
+
+professional
+
+Avoid:
+
+aggressive bounce
+
+fast flashing
+
+Goal:
+
+Enterprise-grade polish similar to Cloudflare style motion design.
+
+Final Output
+
+Generate:
+
+full Next.js project
+
+reusable components
+
+clean code structure
+
+comments explaining animation logic
+
+The project must be ready for deployment to Vercel.
