@@ -1,0 +1,9 @@
+All changes are already STAGED. Run these in a terminal from the repo folder:
+
+  cd c:\Users\HP\Downloads\Marketplace-SaaS\Marketplace-SaaS
+
+  git commit -m "Add standalone frontend and backend for Vercel and Render"
+
+  git push
+
+If you use a different path to the repo, cd there first. The first command commits the staged files; the second pushes to GitHub.

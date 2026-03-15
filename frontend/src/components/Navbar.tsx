@@ -36,7 +36,7 @@ export default function Navbar() {
           {/* Logo */}
           <motion.a href="/" className="flex items-center gap-0 flex-shrink-0" whileHover={{ opacity: 0.9 }}>
             <img
-              src="/apexlyn-logo.png"
+              src="/apexlyn-logo.svg"
               alt="APEXLyn"
               className="h-16 w-auto object-contain"
             />

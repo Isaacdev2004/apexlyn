@@ -37,7 +37,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <a href="/" className="block mb-5">
               <img
-                src="/apexlyn-logo.png"
+                src="/apexlyn-logo.svg"
                 alt="APEXLyn"
                 className="h-14 w-auto object-contain"
               />
