@@ -1,6 +1,6 @@
 {
   "framework": "vite",
-  "buildCommand": "pnpm install && pnpm --filter @workspace/marketing-site run build",
+  "buildCommand": "pnpm install && pnpm --filter @workspace/marketing-site run build && cp -r artifacts/marketing-site/dist/public public",
   "outputDirectory": "public",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
