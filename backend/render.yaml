@@ -1,0 +1,16 @@
+# Render Blueprint for APEXLyn API (backend)
+# Deploy: connect this repo and set Root Directory to "backend"
+services:
+  - type: web
+    name: apexlyn-api
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: node dist/index.cjs
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        generateValue: true
+      # Add your database URL in Render dashboard:
+      # - key: DATABASE_URL
+      #   sync: false
