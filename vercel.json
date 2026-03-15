@@ -1,6 +1,6 @@
 {
   "framework": "vite",
-  "buildCommand": "pnpm install && pnpm --filter @workspace/marketing-site run build && cp -r artifacts/marketing-site/dist/public public",
+  "buildCommand": "pnpm install && pnpm run vercel-build",
   "outputDirectory": "public",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
