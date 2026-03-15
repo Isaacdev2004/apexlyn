@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
 
 const oneEvidenceFeatures = [
   "Single pane of glass for all compliance evidence",
@@ -18,18 +19,35 @@ const aiDlpFeatures = [
   "Forensic-grade incident investigation and reporting",
 ];
 
+interface ProductSectionProps {
+  id: string;
+  platform: string;
+  tagline: string;
+  description: string;
+  features: string[];
+  colorClasses: {
+    text: string;
+    check: string;
+    border: string;
+    button: string;
+    layerBg: string;
+  };
+  reversed: boolean;
+  inView: boolean;
+  delay: number;
+}
+
 function ProductSection({
   id,
   platform,
   tagline,
   description,
   features,
-  accentColor,
   colorClasses,
   reversed,
   inView,
   delay,
-}: any) {
+}: ProductSectionProps) {
   return (
     <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${reversed ? "" : ""}`}>
       {/* Content */}
@@ -42,11 +60,11 @@ function ProductSection({
         <span className={`inline-block text-xs font-semibold tracking-widest uppercase mb-3 ${colorClasses.text}`}>
           {platform}
         </span>
-        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">{tagline}</h3>
-        <p className="text-slate-400 text-base leading-relaxed mb-7">{description}</p>
+        <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 leading-tight">{tagline}</h3>
+        <p className="text-slate-600 text-base leading-relaxed mb-7">{description}</p>
         <ul className="space-y-3 mb-8">
           {features.map((f: string) => (
-            <li key={f} className="flex items-start gap-3 text-slate-300 text-sm">
+            <li key={f} className="flex items-start gap-3 text-slate-700 text-sm">
               <CheckCircle2 className={`w-4 h-4 mt-0.5 flex-shrink-0 ${colorClasses.check}`} />
               {f}
             </li>
@@ -67,7 +85,7 @@ function ProductSection({
         initial={{ opacity: 0, x: reversed ? -30 : 30 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.75, delay: delay + 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className={`${reversed ? "lg:order-1" : ""} p-8 rounded-2xl border ${colorClasses.border} bg-white/2`}
+        className={`${reversed ? "lg:order-1" : ""} p-8 rounded-2xl border ${colorClasses.border} bg-white shadow-sm`}
       >
         <div className={`text-xs font-semibold tracking-widest uppercase mb-5 ${colorClasses.text}`}>
           {platform} Architecture
@@ -103,10 +121,10 @@ function ProductSection({
 function ArchLayer({ label, items, color }: { label: string; items: string[]; color: string }) {
   return (
     <div className={`${color} rounded-lg p-3`}>
-      <div className="text-xs text-slate-400 mb-2 font-medium">{label}</div>
+      <div className="text-xs text-slate-500 mb-2 font-medium">{label}</div>
       <div className="flex flex-wrap gap-1.5">
         {items.map((item) => (
-          <span key={item} className="text-xs text-slate-300 bg-white/8 rounded px-2 py-0.5">{item}</span>
+          <span key={item} className="text-xs text-slate-700 bg-slate-100 rounded px-2 py-0.5">{item}</span>
         ))}
       </div>
     </div>
@@ -116,7 +134,7 @@ function ArchLayer({ label, items, color }: { label: string; items: string[]; co
 function ArchArrow() {
   return (
     <div className="flex justify-center">
-      <div className="w-px h-4 bg-white/15" />
+      <div className="w-px h-4 bg-slate-200" />
     </div>
   );
 }
@@ -126,36 +144,22 @@ export default function LensOrbit() {
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
-    <section id="platforms" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#080d1a] to-[#0a1120]" />
+    <section id="platforms" className="py-24 relative overflow-hidden bg-slate-50">
       <div className="divider-gradient absolute top-0 left-0 right-0" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
-        <div className="text-center mb-16">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-blue-400 text-xs font-semibold tracking-widest uppercase mb-3"
-          >
-            Our Platforms
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 18 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.08 }}
-            className="text-3xl sm:text-4xl font-bold text-white mb-4"
-          >
-            Two platforms. <span className="gradient-text-blue">One security posture.</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.16 }}
-            className="text-slate-400 max-w-2xl mx-auto"
-          >
-            Whether you need to prove compliance or prevent data loss, APEXLyn has a
-            purpose-built platform that integrates seamlessly with your existing stack.
-          </motion.p>
+        <div className="mb-16">
+          <SectionHeading
+            eyebrow="Our Platforms"
+            title={
+              <>
+                Two platforms. <span className="gradient-text-blue">One security posture.</span>
+              </>
+            }
+            description="Whether you need to prove compliance or prevent data loss, APEXLyn has a purpose-built platform that integrates seamlessly with your existing stack."
+            inView={inView}
+            center
+          />
         </div>
 
         <div className="space-y-24">
@@ -169,11 +173,11 @@ export default function LensOrbit() {
             inView={inView}
             delay={0.2}
             colorClasses={{
-              text: "text-blue-400",
-              check: "text-blue-400",
-              border: "border-blue-500/20",
+              text: "text-blue-600",
+              check: "text-blue-600",
+              border: "border-blue-200",
               button: "bg-blue-600 hover:bg-blue-500",
-              layerBg: "bg-blue-500/8",
+              layerBg: "bg-blue-50",
             }}
           />
           <ProductSection
@@ -186,11 +190,11 @@ export default function LensOrbit() {
             inView={inView}
             delay={0.25}
             colorClasses={{
-              text: "text-orange-400",
-              check: "text-orange-400",
-              border: "border-orange-500/20",
+              text: "text-orange-600",
+              check: "text-orange-600",
+              border: "border-orange-200",
               button: "bg-orange-600 hover:bg-orange-500",
-              layerBg: "bg-orange-500/8",
+              layerBg: "bg-orange-50",
             }}
           />
         </div>

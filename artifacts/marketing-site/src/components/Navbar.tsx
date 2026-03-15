@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Platforms", href: "#platforms" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Trust Center", href: "#trust" },
-  { label: "Resources", href: "#" },
-  { label: "Company", href: "#" },
+  { label: "Platforms", href: "/platforms" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Trust Center", href: "/trust" },
+  { label: "Resources", href: "/resources" },
+  { label: "Company", href: "/company" },
 ];
 
 export default function Navbar() {
@@ -27,18 +27,18 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#080d1a]/95 backdrop-blur-xl border-b border-white/6 shadow-[0_4px_32px_rgba(0,0,0,0.5)]"
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm"
+          : "bg-white/80 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.a href="#" className="flex items-center gap-0 flex-shrink-0" whileHover={{ opacity: 0.9 }}>
+          <motion.a href="/" className="flex items-center gap-0 flex-shrink-0" whileHover={{ opacity: 0.9 }}>
             <img
               src="/apexlyn-logo.png"
               alt="APEXLyn"
-              className="h-8 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
           </motion.a>
 
@@ -48,7 +48,8 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="flex items-center gap-1 px-4 py-2 text-sm text-slate-400 hover:text-white transition-colors duration-200 underline-animate"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-1 px-4 py-2 text-sm text-slate-600 hover:text-slate-900 transition-colors duration-200 underline-animate"
               >
                 {link.label}
               </a>
@@ -57,11 +58,11 @@ export default function Navbar() {
 
           {/* CTAs */}
           <div className="hidden md:flex items-center gap-3">
-            <a href="#" className="text-sm text-slate-400 hover:text-white transition-colors duration-200">
+            <a href="#" className="text-sm text-slate-600 hover:text-slate-900 transition-colors duration-200">
               Sign in
             </a>
             <motion.a
-              href="#contact"
+              href="/#contact"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-md transition-all duration-200 shadow-[0_0_20px_rgba(59,130,246,0.25)]"
@@ -73,7 +74,7 @@ export default function Navbar() {
           {/* Mobile button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-slate-400 hover:text-white transition-colors p-1"
+            className="md:hidden text-slate-600 hover:text-slate-900 transition-colors p-1"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -89,7 +90,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22 }}
-            className="md:hidden bg-[#080d1a]/97 backdrop-blur-xl border-b border-white/6"
+            className="md:hidden bg-white border-b border-slate-200 shadow-sm"
           >
             <div className="px-6 py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
@@ -97,15 +98,15 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="py-2.5 text-slate-300 hover:text-white transition-colors text-sm border-b border-white/5 last:border-0"
+                  className="py-2.5 text-slate-600 hover:text-slate-900 transition-colors text-sm border-b border-slate-100 last:border-0"
                 >
                   {link.label}
                 </a>
               ))}
               <div className="pt-4 flex flex-col gap-2">
-                <a href="#" className="text-sm text-slate-400 py-2">Sign in</a>
+                <a href="#" className="text-sm text-slate-600 py-2">Sign in</a>
                 <a
-                  href="#contact"
+                  href="/#contact"
                   className="py-2.5 bg-blue-600 text-white text-sm font-medium rounded-md text-center"
                 >
                   Request Demo

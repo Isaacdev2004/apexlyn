@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { FileCheck2, Search, ShieldAlert, Cloud, FolderLock, Network, Scale, Database } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
 
 const features = [
   {
@@ -74,13 +74,13 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: (index % 4) * 0.07, ease: [0.22, 1, 0.36, 1] }}
-      className="group p-6 rounded-xl border border-white/7 bg-white/2 card-hover cursor-default"
+      className="group p-6 rounded-xl border border-slate-200 bg-white card-hover cursor-default shadow-sm"
     >
       <div className={`w-9 h-9 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center mb-4`}>
         <Icon className={`w-4.5 h-4.5 ${colors.icon}`} strokeWidth={1.8} />
       </div>
-      <h3 className="text-white font-semibold text-sm mb-2 leading-snug">{feature.title}</h3>
-      <p className="text-slate-500 text-sm leading-relaxed">{feature.description}</p>
+      <h3 className="text-slate-900 font-semibold text-sm mb-2 leading-snug">{feature.title}</h3>
+      <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
     </motion.div>
   );
 }
@@ -91,36 +91,21 @@ export default function Features() {
 
   return (
     <section id="features" className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#080d1a] via-[#0a1120] to-[#080d1a]" />
+      <div className="absolute inset-0 bg-slate-50" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div ref={titleRef} className="max-w-2xl mb-14">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={titleInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-blue-400 text-xs font-semibold tracking-widest uppercase mb-3"
-          >
-            Platform Capabilities
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 18 }}
-            animate={titleInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight"
-          >
-            Security and compliance,{" "}
-            <span className="gradient-text-blue">engineered together</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={titleInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.16 }}
-            className="text-slate-400 text-base leading-relaxed"
-          >
-            APEXLyn's platform is purpose-built for enterprise organizations that face
-            complex regulatory environments and sophisticated threats simultaneously.
-          </motion.p>
+          <SectionHeading
+            eyebrow="Platform Capabilities"
+            title={
+              <>
+                Security and compliance,{" "}
+                <span className="gradient-text-blue">engineered together</span>
+              </>
+            }
+            description="APEXLyn's platform is purpose-built for enterprise organizations that face complex regulatory environments and sophisticated threats simultaneously."
+            inView={titleInView}
+          />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

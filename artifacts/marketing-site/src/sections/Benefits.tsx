@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Shield, Clock, Server, Award } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
 
 const benefits = [
   {
@@ -50,37 +51,22 @@ export default function Benefits() {
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
-    <section id="solutions" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[#080d1a]" />
+    <section id="solutions" className="py-24 relative overflow-hidden bg-white">
       <div className="divider-gradient absolute top-0 left-0 right-0" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
         <div className="max-w-2xl mb-14">
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="text-blue-400 text-xs font-semibold tracking-widest uppercase mb-3"
-          >
-            Why APEXLyn
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 18 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.08 }}
-            className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight"
-          >
-            Built for enterprises that{" "}
-            <span className="gradient-text-blue">can't afford to get it wrong</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.16 }}
-            className="text-slate-400 text-base"
-          >
-            Our architecture decisions are guided by one principle: enterprise security
-            and compliance teams need tools that are reliable, auditable, and fast.
-          </motion.p>
+          <SectionHeading
+            eyebrow="Why APEXLyn"
+            title={
+              <>
+                Built for enterprises that{" "}
+                <span className="gradient-text-blue">can't afford to get it wrong</span>
+              </>
+            }
+            description="Our architecture decisions are guided by one principle: enterprise security and compliance teams need tools that are reliable, auditable, and fast."
+            inView={inView}
+          />
         </div>
 
         {/* Stats row */}
@@ -95,14 +81,14 @@ export default function Benefits() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -3 }}
-                className="p-6 rounded-xl border border-white/7 bg-white/2 transition-all duration-300"
+                className="p-6 rounded-xl border border-slate-200 bg-slate-50 transition-all duration-300 shadow-sm"
               >
                 <div className={`w-10 h-10 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center mb-4`}>
                   <Icon className={`w-4.5 h-4.5 ${colors.text}`} strokeWidth={1.8} />
                 </div>
                 <div className={`text-3xl font-bold ${colors.text} mb-1`}>{b.stat}</div>
-                <div className="text-white font-semibold text-sm mb-2">{b.label}</div>
-                <p className="text-slate-500 text-xs leading-relaxed">{b.description}</p>
+                <div className="text-slate-900 font-semibold text-sm mb-2">{b.label}</div>
+                <p className="text-slate-600 text-xs leading-relaxed">{b.description}</p>
               </motion.div>
             );
           })}
@@ -113,14 +99,14 @@ export default function Benefits() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="border border-white/7 rounded-xl p-7 bg-white/2"
+          className="border border-slate-200 rounded-xl p-7 bg-slate-50"
         >
-          <p className="text-slate-400 text-sm mb-5 font-medium">Trusted across regulated industries</p>
+          <p className="text-slate-600 text-sm mb-5 font-medium">Trusted across regulated industries</p>
           <div className="flex flex-wrap gap-3">
             {industries.map((industry) => (
               <span
                 key={industry}
-                className="px-4 py-1.5 rounded-full border border-white/10 bg-white/4 text-slate-300 text-sm"
+                className="px-4 py-1.5 rounded-full border border-slate-200 bg-white text-slate-700 text-sm"
               >
                 {industry}
               </span>

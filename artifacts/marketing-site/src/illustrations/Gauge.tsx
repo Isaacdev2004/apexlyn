@@ -59,6 +59,12 @@ export default function Gauge({ value = 87, label = "" }: GaugeProps) {
     { start: 270, end: 360, color: "#22c55e" },
   ];
 
+  const trackColor = "rgba(15, 23, 42, 0.08)";
+  const needleColor = "#0f172a";
+  const hubStroke = "rgba(15, 23, 42, 0.12)";
+  const scoreColor = "#0f172a";
+  const scoreSubtle = "rgba(15, 23, 42, 0.45)";
+
   return (
     <div className="flex flex-col items-center">
       <svg
@@ -70,7 +76,7 @@ export default function Gauge({ value = 87, label = "" }: GaugeProps) {
         aria-label={`Score: ${displayValue}`}
       >
         {/* Track */}
-        <path d={arcPath(180, 360)} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth={strokeWidth} strokeLinecap="butt" />
+        <path d={arcPath(180, 360)} fill="none" stroke={trackColor} strokeWidth={strokeWidth} strokeLinecap="butt" />
         {/* Segments */}
         {segments.map((seg, i) => (
           <path key={i} d={arcPath(seg.start, seg.end)} fill="none" stroke={seg.color} strokeWidth={strokeWidth} strokeLinecap="butt" opacity="0.8" />
@@ -81,17 +87,17 @@ export default function Gauge({ value = 87, label = "" }: GaugeProps) {
           animate={controls}
           initial={{ rotate: -180 }}
         >
-          <line x1={cx} y1={cy} x2={cx} y2={cy - R + strokeWidth / 2 + 2} stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1={cx} y1={cy} x2={cx} y2={cy - R + strokeWidth / 2 + 2} stroke={needleColor} strokeWidth="1.5" strokeLinecap="round" />
           <circle cx={cx} cy={cy - R + strokeWidth / 2 + 2} r="2" fill="#3b82f6" />
         </motion.g>
         {/* Hub */}
-        <circle cx={cx} cy={cy} r="6" fill="#1e293b" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+        <circle cx={cx} cy={cy} r="6" fill="#ffffff" stroke={hubStroke} strokeWidth="1" />
         <circle cx={cx} cy={cy} r="3" fill="#3b82f6" />
         {/* Score */}
-        <text x={cx} y={cy + 22} textAnchor="middle" fill="white" fontSize="20" fontWeight="700" fontFamily="Inter, sans-serif">
+        <text x={cx} y={cy + 22} textAnchor="middle" fill={scoreColor} fontSize="20" fontWeight="700" fontFamily="Inter, sans-serif">
           {displayValue}
         </text>
-        <text x={cx} y={cy + 33} textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="8" fontFamily="Inter, sans-serif">
+        <text x={cx} y={cy + 33} textAnchor="middle" fill={scoreSubtle} fontSize="8" fontFamily="Inter, sans-serif">
           / 100
         </text>
       </svg>
