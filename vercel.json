@@ -1,5 +1,12 @@
 {
-  "buildCommand": "pnpm install && pnpm --filter @workspace/marketing-site run build",
-  "outputDirectory": "artifacts/marketing-site/dist/public",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "artifacts/marketing-site/dist/public"
+      }
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

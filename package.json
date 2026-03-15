@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "preinstall": "node -e \"const u=process.env.npm_config_user_agent||''; if(u.startsWith('pnpm/')) process.exit(0); console.error('Use pnpm instead'); process.exit(1);\"",
-    "vercel-build": "pnpm --filter @workspace/marketing-site run build && node -e \"const fs=require('fs'); const path=require('path'); const src=path.join(process.cwd(),'artifacts','marketing-site','dist','public'); const dest=path.join(process.cwd(),'public'); if(!fs.existsSync(src)) process.exit(1); fs.cpSync(src, dest, {recursive: true});\"",
+    "vercel-build": "pnpm --filter @workspace/marketing-site run build",
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
     "typecheck:libs": "tsc --build",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
