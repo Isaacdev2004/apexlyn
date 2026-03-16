@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { Mail, MapPin, Users, Handshake, Newspaper } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import { easeSmooth } from "@/lib/animations";
 
 const companyLinks = [
   { icon: Users, title: "About APEXLyn", description: "Mission, team, and our approach to enterprise security and compliance." },
@@ -18,8 +19,8 @@ export default function Company() {
 
   return (
     <Layout>
-      <section className="pt-24 pb-16 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto" ref={ref}>
+      <section className="section-pad pt-28 bg-white">
+        <div className="container-cf" ref={ref}>
           <div className="mb-16">
             <SectionHeading
               eyebrow="Company"
@@ -43,27 +44,31 @@ export default function Company() {
                   key={item.title}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  transition={{ duration: 0.5, delay: i * 0.08, ease: easeSmooth }}
                   className="card-cf p-6 rounded-xl border border-slate-200 bg-white shadow-sm"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-blue-100 border border-blue-200 flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-blue-600" strokeWidth={1.8} />
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-primary" strokeWidth={1.8} />
                   </div>
                   <h3 className="text-slate-900 font-semibold text-lg mb-2">{item.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed mb-4">{item.description}</p>
-                  <a href={item.title === "Contact" ? "/#contact" : "#"} className="text-blue-600 text-sm font-medium hover:underline">
+                  <a href={item.title === "Contact" ? "/contact" : "#"} className="link-cf text-primary text-sm font-medium">
                     Learn more →
                   </a>
                 </motion.div>
               );
             })}
           </div>
+        </div>
+      </section>
 
+      <section className="section-pad section-alt">
+        <div className="container-cf">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.3 }}
-            className="p-8 rounded-2xl border border-slate-200 bg-slate-50 flex flex-col sm:flex-row gap-6 items-start sm:items-center"
+            transition={{ delay: 0.3, duration: 0.5, ease: easeSmooth }}
+            className="card-cf p-8 rounded-2xl border border-slate-200 bg-white flex flex-col sm:flex-row gap-6 items-start sm:items-center shadow-sm"
           >
             <MapPin className="w-6 h-6 text-slate-500 flex-shrink-0" />
             <div>

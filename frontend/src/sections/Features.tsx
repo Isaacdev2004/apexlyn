@@ -90,9 +90,7 @@ export default function Features() {
   const titleInView = useInView(titleRef as React.RefObject<Element>, { once: true });
 
   return (
-    <section id="features" className="section-pad relative">
-      <div className="absolute inset-0 bg-slate-50" />
-
+    <section id="features" className="section-pad section-alt relative">
       <div className="relative container-cf">
         <div ref={titleRef} className="max-w-2xl mb-14">
           <SectionHeading

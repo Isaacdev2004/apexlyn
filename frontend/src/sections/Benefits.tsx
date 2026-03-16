@@ -51,7 +51,7 @@ export default function Benefits() {
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
-    <section id="solutions" className="py-24 relative overflow-hidden bg-white">
+    <section id="solutions" className="section-pad relative overflow-hidden bg-white">
       <div className="divider-gradient absolute top-0 left-0 right-0" />
 
       <div className="relative container-cf" ref={ref}>

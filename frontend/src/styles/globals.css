@@ -37,12 +37,13 @@
   --foreground: 222 47% 11%;
   --border: 214 20% 90%;
   --input: 214 20% 90%;
-  --ring: 217 91% 60%;
+  --ring: 224 76% 48%;
   --card: 0 0% 98%;
   --card-foreground: 222 47% 11%;
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
-  --primary: 217 91% 60%;
+  /* APEXLyn locked: global primary #1D4ED8 */
+  --primary: 224 76% 48%;
   --primary-foreground: 0 0% 100%;
   --secondary: 214 32% 96%;
   --secondary-foreground: 222 47% 11%;
@@ -56,9 +57,10 @@
   --app-font-mono: "ui-monospace", monospace;
   --radius: 0.375rem;
 
-  /* APEXLyn locked: primary blue + neutrals */
-  --apexlyn-blue: 217 91% 60%;
+  /* APEXLyn locked: primary #1D4ED8 + neutrals */
+  --apexlyn-blue: 224 76% 48%;
   --apexlyn-blue-foreground: 0 0% 100%;
+  --primary-hex: #1D4ED8;
   --apexlyn-neutral-50: 210 40% 98%;
   --apexlyn-neutral-100: 210 40% 96%;
   --apexlyn-neutral-200: 214 32% 91%;
@@ -129,7 +131,7 @@
   }
   .card-cf:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(59, 130, 246, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06), 0 0 0 1px hsl(var(--primary) / 0.12);
     border-color: hsl(var(--border));
   }
 
@@ -152,29 +154,37 @@
   }
 
   .gradient-text-blue {
-    background: linear-gradient(135deg, #1e40af 0%, hsl(var(--primary)) 100%);
+    background: linear-gradient(135deg, #1e40af 0%, var(--primary-hex) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .gradient-text-brand {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, #1e40af 100%);
+    background: linear-gradient(135deg, var(--primary-hex) 0%, #1e40af 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .glow-blue {
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.15), 0 0 60px rgba(59, 130, 246, 0.04);
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.15), 0 0 60px hsl(var(--primary) / 0.04);
   }
 
-  /* Hero: very light grid texture */
+  /* Hero: very light grid texture (primary tint) */
   .grid-bg {
     background-image:
-      linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+      linear-gradient(hsl(var(--primary) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.04) 1px, transparent 1px);
     background-size: 64px 64px;
+  }
+
+  /* Section rhythm: alternating blocks (no dark sections) */
+  .section-alt {
+    background-color: hsl(210 40% 98%);
+  }
+  .section-subtle {
+    background-color: hsl(var(--primary) / 0.03);
   }
 
   .logo-on-light {
@@ -205,12 +215,12 @@
   }
   .card-hover:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(59, 130, 246, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06), 0 0 0 1px hsl(var(--primary) / 0.12);
     border-color: hsl(var(--border));
   }
 
   .divider-gradient {
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.25), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.25), transparent);
   }
 }

@@ -30,10 +30,11 @@ const testimonials = [
   },
 ];
 
+/* Light-only avatars: no dark sections (brand lock) */
 const colorMap: Record<string, { ring: string; bg: string; text: string; accent: string }> = {
-  blue: { ring: "ring-blue-500/25", bg: "bg-blue-700", text: "text-blue-400", accent: "border-blue-500/15" },
-  orange: { ring: "ring-orange-500/25", bg: "bg-orange-700", text: "text-orange-400", accent: "border-orange-500/15" },
-  green: { ring: "ring-green-500/25", bg: "bg-green-700", text: "text-green-400", accent: "border-green-600/15" },
+  blue: { ring: "ring-primary/25", bg: "bg-primary/15", text: "text-primary", accent: "border-primary/15" },
+  orange: { ring: "ring-orange-500/25", bg: "bg-orange-500/10", text: "text-orange-600", accent: "border-orange-500/15" },
+  green: { ring: "ring-green-500/25", bg: "bg-green-500/10", text: "text-green-600", accent: "border-green-600/15" },
 };
 
 export default function Testimonials() {
@@ -41,7 +42,7 @@ export default function Testimonials() {
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
-    <section className="section-pad relative overflow-hidden bg-slate-50">
+    <section className="section-pad section-alt relative overflow-hidden">
       <div className="divider-gradient absolute top-0 left-0 right-0" />
 
       <div className="relative container-cf" ref={ref}>
@@ -73,7 +74,7 @@ export default function Testimonials() {
                 <Quote className={`w-5 h-5 ${colors.text} opacity-60`} />
                 <p className="text-slate-600 text-sm leading-relaxed flex-1">"{t.quote}"</p>
                 <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                  <div className={`w-9 h-9 rounded-full ${colors.bg} ring-2 ${colors.ring} flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0`}>
+                  <div className={`w-9 h-9 rounded-full ${colors.bg} ring-2 ${colors.ring} flex items-center justify-center ${colors.text} text-[10px] font-bold flex-shrink-0`}>
                     {t.initials}
                   </div>
                   <div>

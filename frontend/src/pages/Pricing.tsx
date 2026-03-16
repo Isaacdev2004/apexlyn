@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
+import PricingLineArt from "@/illustrations/PricingLineArt";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import { easeSmooth } from "@/lib/animations";
 
 const plans = [
   {
@@ -47,36 +49,51 @@ export default function Pricing() {
 
   return (
     <Layout>
-      <section className="pt-24 pb-16 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto" ref={ref}>
-          <div className="mb-16">
-            <SectionHeading
-              eyebrow="Pricing"
-              title={
-                <>
-                  Enterprise pricing.{" "}
-                  <span className="gradient-text-blue">Tailored to your scale.</span>
-                </>
-              }
-              description="Pricing is based on users, data sources, and scope. We'll work with you to design a plan that fits your compliance and DLP requirements."
-              inView={inView}
-              center
-            />
+      {/* Intro + illustration */}
+      <section className="section-pad pt-28 pb-12 bg-white">
+        <div className="container-cf" ref={ref}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+            <div>
+              <SectionHeading
+                eyebrow="Pricing"
+                title={
+                  <>
+                    Enterprise pricing.{" "}
+                    <span className="gradient-text-blue">Tailored to your scale.</span>
+                  </>
+                }
+                description="Pricing is based on users, data sources, and scope. We'll work with you to design a plan that fits your compliance and DLP requirements."
+                inView={inView}
+              />
+            </div>
+            <motion.div
+              className="flex justify-center lg:justify-end"
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.2, ease: easeSmooth }}
+            >
+              <PricingLineArt className="w-48 h-48 lg:w-56 lg:h-56" />
+            </motion.div>
           </div>
+        </div>
+      </section>
 
+      {/* Plans: distinct section block */}
+      <section className="section-pad section-alt">
+        <div className="container-cf">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {plans.map((plan, i) => (
               <motion.div
                 key={plan.name}
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`p-8 rounded-2xl border bg-white shadow-sm ${
-                  plan.featured ? "border-blue-300 ring-2 ring-blue-100" : "border-slate-200"
+                transition={{ duration: 0.5, delay: i * 0.1, ease: easeSmooth }}
+                className={`card-cf p-8 rounded-2xl border bg-white shadow-sm ${
+                  plan.featured ? "border-primary/40 ring-2 ring-primary/10" : "border-slate-200"
                 }`}
               >
                 {plan.featured && (
-                  <span className="inline-block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-4">
+                  <span className="inline-block text-xs font-semibold text-primary uppercase tracking-wider mb-4">
                     Recommended
                   </span>
                 )}
@@ -92,9 +109,9 @@ export default function Pricing() {
                 </ul>
                 <a
                   href="/#contact"
-                  className={`inline-flex items-center justify-center gap-2 w-full py-3 rounded-md font-medium text-sm transition-colors ${
+                  className={`btn-cf inline-flex items-center justify-center gap-2 w-full py-3 rounded-md font-medium text-sm ${
                     plan.featured
-                      ? "bg-blue-600 hover:bg-blue-500 text-white"
+                      ? "bg-primary hover:opacity-90 text-primary-foreground shadow-sm"
                       : "bg-slate-100 hover:bg-slate-200 text-slate-800"
                   }`}
                 >
@@ -105,10 +122,10 @@ export default function Pricing() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.4 }}
-            className="p-8 rounded-2xl border border-slate-200 bg-slate-50 text-center"
+            initial={{ opacity: 0, y: 12 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4, duration: 0.5, ease: easeSmooth }}
+            className="card-cf p-8 rounded-2xl border border-slate-200 bg-white text-center shadow-sm"
           >
             <p className="text-slate-700 text-sm mb-2">
               All plans include: Data sovereignty (AWS Sydney or your region), SSO, encryption, and 24/7 support options.

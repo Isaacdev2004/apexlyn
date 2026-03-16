@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { Building2, Scale, Heart, Landmark, Shield, Cpu } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import { easeSmooth } from "@/lib/animations";
 
 const industries = [
   { icon: Heart, name: "Healthcare", description: "HIPAA, clinical data, and patient privacy. One Evidence and AI DLP for healthcare providers and payers." },
@@ -19,7 +20,7 @@ export default function Industries() {
 
   return (
     <Layout>
-      <section className="section-pad pt-28">
+      <section className="section-pad pt-28 bg-white">
         <div className="container-cf" ref={ref}>
           <div className="max-w-2xl mb-16">
             <SectionHeading
@@ -34,6 +35,10 @@ export default function Industries() {
               inView={inView}
             />
           </div>
+        </div>
+      </section>
+      <section className="section-pad section-alt">
+        <div className="container-cf">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {industries.map((ind, i) => {
               const Icon = ind.icon;
@@ -42,7 +47,7 @@ export default function Industries() {
                   key={ind.name}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.5, delay: i * 0.06, ease: easeSmooth }}
                   className="card-cf p-6 rounded-xl border border-slate-200 bg-white shadow-sm"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
@@ -59,3 +64,4 @@ export default function Industries() {
     </Layout>
   );
 }
+
