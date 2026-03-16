@@ -8,11 +8,11 @@ export default function CTA() {
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-white">
+    <section id="contact" className="section-pad relative overflow-hidden bg-white">
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div className="divider-gradient absolute top-0 left-0 right-0" />
 
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-8" ref={ref}>
+      <div className="relative container-cf max-w-5xl" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
           <div>
             <SectionHeading
@@ -64,7 +64,7 @@ export default function CTA() {
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="p-7 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm"
+            className="card-cf p-7 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm"
           >
             <h3 className="text-slate-900 font-semibold text-base mb-6">Request a Demo</h3>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -118,9 +118,10 @@ export default function CTA() {
                 </select>
               </div>
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="group w-full mt-2 py-3 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-md transition-all duration-200 text-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.25)]"
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="btn-cf group w-full mt-2 py-3 bg-primary hover:opacity-90 text-primary-foreground font-medium rounded-md text-sm flex items-center justify-center gap-2 shadow-sm"
               >
                 Request Demo
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

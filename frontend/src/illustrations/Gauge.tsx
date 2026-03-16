@@ -11,25 +11,26 @@ export default function Gauge({ value = 87, label = "" }: GaugeProps) {
   const ref = useRef<SVGSVGElement>(null);
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-40px" });
   const [displayValue, setDisplayValue] = useState(0);
+  const hasAnimated = useRef(false);
 
   const targetRotation = -180 + (value / 100) * 180;
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || hasAnimated.current) return;
+    hasAnimated.current = true;
+
     controls.start({
       rotate: targetRotation,
-      transition: { duration: 4.5, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
     });
-    let start = 0;
-    const end = value;
-    const duration = 4200;
+
+    const duration = 1200;
     const startTime = performance.now();
     const tick = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      start = Math.round(eased * end);
-      setDisplayValue(start);
+      setDisplayValue(Math.round(eased * value));
       if (progress < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -75,25 +76,20 @@ export default function Gauge({ value = 87, label = "" }: GaugeProps) {
         className="overflow-visible"
         aria-label={`Score: ${displayValue}`}
       >
-        {/* Track */}
         <path d={arcPath(180, 360)} fill="none" stroke={trackColor} strokeWidth={strokeWidth} strokeLinecap="butt" />
-        {/* Segments */}
         {segments.map((seg, i) => (
           <path key={i} d={arcPath(seg.start, seg.end)} fill="none" stroke={seg.color} strokeWidth={strokeWidth} strokeLinecap="butt" opacity="0.8" />
         ))}
-        {/* Needle */}
         <motion.g
           style={{ transformOrigin: `${cx}px ${cy}px` }}
           animate={controls}
           initial={{ rotate: -180 }}
         >
           <line x1={cx} y1={cy} x2={cx} y2={cy - R + strokeWidth / 2 + 2} stroke={needleColor} strokeWidth="1.5" strokeLinecap="round" />
-          <circle cx={cx} cy={cy - R + strokeWidth / 2 + 2} r="2" fill="#3b82f6" />
+          <circle cx={cx} cy={cy - R + strokeWidth / 2 + 2} r="2" fill="hsl(var(--primary))" />
         </motion.g>
-        {/* Hub */}
         <circle cx={cx} cy={cy} r="6" fill="#ffffff" stroke={hubStroke} strokeWidth="1" />
-        <circle cx={cx} cy={cy} r="3" fill="#3b82f6" />
-        {/* Score */}
+        <circle cx={cx} cy={cy} r="3" fill="hsl(var(--primary))" />
         <text x={cx} y={cy + 22} textAnchor="middle" fill={scoreColor} fontSize="20" fontWeight="700" fontFamily="Inter, sans-serif">
           {displayValue}
         </text>

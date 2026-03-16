@@ -41,10 +41,10 @@ export default function Testimonials() {
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-24 relative overflow-hidden bg-slate-50">
+    <section className="section-pad relative overflow-hidden bg-slate-50">
       <div className="divider-gradient absolute top-0 left-0 right-0" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
+      <div className="relative container-cf" ref={ref}>
         <div className="max-w-2xl mb-14">
           <SectionHeading
             eyebrow="Client Outcomes"
@@ -68,7 +68,7 @@ export default function Testimonials() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4 }}
-                className={`p-7 rounded-xl border border-slate-200 bg-white transition-all duration-300 shadow-sm hover:shadow-md flex flex-col gap-5`}
+                className="card-cf p-7 rounded-xl border border-slate-200 bg-white shadow-sm flex flex-col gap-5"
               >
                 <Quote className={`w-5 h-5 ${colors.text} opacity-60`} />
                 <p className="text-slate-600 text-sm leading-relaxed flex-1">"{t.quote}"</p>

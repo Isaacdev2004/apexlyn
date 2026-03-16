@@ -74,7 +74,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: (index % 4) * 0.07, ease: [0.22, 1, 0.36, 1] }}
-      className="group p-6 rounded-xl border border-slate-200 bg-white card-hover cursor-default shadow-sm"
+      className="card-cf group p-6 rounded-xl border border-slate-200 bg-white cursor-default shadow-sm"
     >
       <div className={`w-9 h-9 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center mb-4`}>
         <Icon className={`w-4.5 h-4.5 ${colors.icon}`} strokeWidth={1.8} />
@@ -90,10 +90,10 @@ export default function Features() {
   const titleInView = useInView(titleRef as React.RefObject<Element>, { once: true });
 
   return (
-    <section id="features" className="py-24 relative">
+    <section id="features" className="section-pad relative">
       <div className="absolute inset-0 bg-slate-50" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative container-cf">
         <div ref={titleRef} className="max-w-2xl mb-14">
           <SectionHeading
             eyebrow="Platform Capabilities"

@@ -1,9 +1,8 @@
 const footerLinks = {
   Platforms: [
-    { label: "One Evidence", href: "/platforms#one-evidence" },
-    { label: "AI DLP", href: "/platforms#ai-dlp" },
-    { label: "Track", href: "/platforms" },
-    { label: "Lens", href: "/platforms" },
+    { label: "APEXLyn Track", href: "/platforms#track" },
+    { label: "APEXLyn Lens", href: "/platforms#lens" },
+    { label: "Architecture", href: "/platforms#architecture" },
     { label: "Pricing", href: "/pricing" },
   ],
   Solutions: [
@@ -21,10 +20,11 @@ const footerLinks = {
     { label: "Status Page", href: "/resources" },
   ],
   Company: [
-    { label: "About APEXLyn", href: "/company" },
+    { label: "About APEXLyn", href: "/about" },
+    { label: "Industries", href: "/industries" },
     { label: "Careers", href: "/company" },
     { label: "Partners", href: "/company" },
-    { label: "Contact", href: "/#contact" },
+    { label: "Contact", href: "/contact" },
     { label: "Press", href: "/company" },
   ],
 };
@@ -32,7 +32,7 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="relative bg-slate-50 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+      <div className="container-cf py-16">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-10">
           <div className="md:col-span-2">
             <a href="/" className="block mb-5">
@@ -61,7 +61,7 @@ export default function Footer() {
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      className="text-slate-600 hover:text-slate-900 text-sm transition-colors duration-150 underline-animate"
+                      className="link-cf text-slate-600 hover:text-slate-900 text-sm transition-colors duration-150"
                     >
                       {item.label}
                     </a>
@@ -84,7 +84,7 @@ export default function Footer() {
               { label: "Trust Center", href: "/trust" },
               { label: "Cookie Policy", href: "/company" },
             ].map((item) => (
-              <a key={item.label} href={item.href} className="text-slate-500 hover:text-slate-700 text-xs transition-colors">
+              <a key={item.label} href={item.href} className="link-cf text-slate-500 hover:text-slate-700 text-xs transition-colors">
                 {item.label}
               </a>
             ))}

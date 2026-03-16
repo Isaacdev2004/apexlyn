@@ -72,9 +72,9 @@ function ProductSection({
         </ul>
         <motion.a
           href={`#${id}`}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-          className={`inline-flex items-center gap-2 px-5 py-2.5 ${colorClasses.button} text-white font-medium rounded-md text-sm transition-all duration-200`}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className={`btn-cf inline-flex items-center gap-2 px-5 py-2.5 ${colorClasses.button} text-white font-medium rounded-md text-sm`}
         >
           Learn about {platform} <ArrowRight className="w-4 h-4" />
         </motion.a>
@@ -85,7 +85,7 @@ function ProductSection({
         initial={{ opacity: 0, x: reversed ? -30 : 30 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.75, delay: delay + 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className={`${reversed ? "lg:order-1" : ""} p-8 rounded-2xl border ${colorClasses.border} bg-white shadow-sm`}
+        className={`card-cf ${reversed ? "lg:order-1" : ""} p-8 rounded-2xl border ${colorClasses.border} bg-white shadow-sm`}
       >
         <div className={`text-xs font-semibold tracking-widest uppercase mb-5 ${colorClasses.text}`}>
           {platform} Architecture
@@ -144,10 +144,10 @@ export default function LensOrbit() {
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
-    <section id="platforms" className="py-24 relative overflow-hidden bg-slate-50">
+    <section id="platforms" className="section-pad relative overflow-hidden bg-slate-50">
       <div className="divider-gradient absolute top-0 left-0 right-0" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
+      <div className="relative container-cf" ref={ref}>
         <div className="mb-16">
           <SectionHeading
             eyebrow="Our Platforms"
@@ -190,11 +190,11 @@ export default function LensOrbit() {
             inView={inView}
             delay={0.25}
             colorClasses={{
-              text: "text-orange-600",
-              check: "text-orange-600",
-              border: "border-orange-200",
-              button: "bg-orange-600 hover:bg-orange-500",
-              layerBg: "bg-orange-50",
+              text: "text-cyan-600",
+              check: "text-cyan-600",
+              border: "border-cyan-200",
+              button: "bg-cyan-600 hover:bg-cyan-500",
+              layerBg: "bg-cyan-50",
             }}
           />
         </div>

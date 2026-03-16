@@ -9,84 +9,75 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       <div className="absolute inset-0 bg-white" />
       <div className="absolute inset-0 grid-bg" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
 
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-blue-300/8 rounded-full blur-[80px] pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-24 w-full">
+      <div className="relative container-cf py-24 w-full">
         <div className="max-w-4xl mx-auto text-center">
-
-          {/* Eyebrow badge */}
           <motion.div
-            variants={fadeUp(0)}
+            variants={fadeUp(0, 16)}
             initial="hidden"
             animate="show"
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-medium mb-7 tracking-wide"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-medium mb-7 tracking-wide"
           >
-            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
             Enterprise Cybersecurity Platform
             <ChevronRight className="w-3.5 h-3.5 opacity-60" />
           </motion.div>
 
-          {/* Main headline */}
           <motion.h1
-            variants={fadeUp(0.1)}
+            variants={fadeUp(0.08, 20)}
             initial="hidden"
             animate="show"
-            className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold leading-[1.08] tracking-tight mb-6"
+            className="text-4xl sm:text-5xl lg:text-[3.75rem] font-bold leading-[1.08] tracking-tight mb-6 text-slate-900"
           >
-            <span className="text-slate-900">Protect your data.</span>
+            Protect your data.
             <br />
-            <span className="text-slate-900">Prove your compliance.</span>
+            Prove your compliance.
             <br />
             <span className="gradient-text-brand">Stay ahead of threats.</span>
           </motion.h1>
 
-          {/* Subheadline */}
           <motion.p
-            variants={fadeUp(0.2)}
+            variants={fadeUp(0.16, 20)}
             initial="hidden"
             animate="show"
             className="text-lg text-slate-600 leading-relaxed mb-10 max-w-2xl mx-auto"
           >
             APEXLyn delivers enterprise-grade cybersecurity through two powerful platforms —{" "}
             <span className="text-slate-800 font-medium">One Evidence</span> for compliance intelligence
-            and{" "}
-            <span className="text-slate-800 font-medium">AI DLP</span> for data loss prevention.
-            Built for organizations that can't afford to fail.
+            and <span className="text-slate-800 font-medium">AI DLP</span> for data loss prevention.
+            Built for organizations that can&apos;t afford to fail.
           </motion.p>
 
-          {/* CTA buttons */}
           <motion.div
-            variants={fadeUp(0.3)}
+            variants={fadeUp(0.24, 20)}
             initial="hidden"
             animate="show"
             className="flex flex-col sm:flex-row justify-center gap-4 mb-14"
           >
             <motion.a
               href="#contact"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-md transition-all duration-200 shadow-[0_0_30px_rgba(59,130,246,0.3)] text-sm"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-cf group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-primary-foreground font-medium rounded-md shadow-sm hover:opacity-90 text-sm"
             >
               Request a Demo
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
             </motion.a>
-
             <motion.a
               href="#platforms"
               whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.97 }}
-              className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-slate-300 hover:border-slate-400 text-slate-700 hover:text-slate-900 font-medium rounded-md bg-slate-50 hover:bg-slate-100 transition-all duration-200 text-sm"
+              whileTap={{ scale: 0.98 }}
+              className="btn-cf group inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-slate-300 hover:border-slate-400 text-slate-700 hover:text-slate-900 font-medium rounded-md bg-white hover:bg-slate-50 text-sm"
             >
               Explore Platforms
             </motion.a>
           </motion.div>
 
-          {/* Trust badges */}
           <motion.div
-            variants={fadeUp(0.45)}
+            variants={fadeUp(0.4, 16)}
             initial="hidden"
             animate="show"
             className="flex flex-wrap justify-center items-center gap-3"
@@ -94,7 +85,7 @@ export default function Hero() {
             {trustBadges.map((badge) => (
               <div
                 key={badge}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-slate-200 bg-slate-50 text-xs text-slate-600"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-slate-200 bg-slate-50/80 text-xs text-slate-600"
               >
                 <ShieldCheck className="w-3 h-3 text-green-600" />
                 {badge}
@@ -103,44 +94,49 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Platform cards preview */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto"
         >
-          <div className="group p-6 rounded-xl border border-slate-200 bg-slate-50/80 hover:border-blue-300 transition-all duration-300 text-left">
+          <a
+            href="/platforms#track"
+            className="card-cf group p-6 rounded-xl border border-slate-200 bg-slate-50/80 text-left block"
+          >
             <div className="flex items-start justify-between mb-4">
-              <div className="w-10 h-10 rounded-lg bg-blue-100 border border-blue-200 flex items-center justify-center">
-                <span className="text-blue-600 text-lg font-bold">OE</span>
+              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+                <span className="text-primary text-lg font-bold">OE</span>
               </div>
-              <span className="text-xs text-blue-600 border border-blue-200 rounded px-2 py-0.5 font-medium">Platform 01</span>
+              <span className="text-xs text-primary border border-primary/20 rounded px-2 py-0.5 font-medium">Track</span>
             </div>
             <h3 className="text-slate-900 font-semibold text-base mb-2">One Evidence</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               Centralized compliance intelligence. Aggregate, verify, and present security evidence across all your frameworks from one unified platform.
             </p>
-            <div className="mt-4 flex items-center gap-1.5 text-blue-600 text-xs font-medium group-hover:gap-2.5 transition-all duration-200">
+            <div className="mt-4 flex items-center gap-1.5 text-primary text-xs font-medium group-hover:gap-2.5 transition-all duration-200">
               Learn more <ArrowRight className="w-3 h-3" />
             </div>
-          </div>
+          </a>
 
-          <div className="group p-6 rounded-xl border border-slate-200 bg-slate-50/80 hover:border-orange-300 transition-all duration-300 text-left">
+          <a
+            href="/platforms#lens"
+            className="card-cf group p-6 rounded-xl border border-slate-200 bg-slate-50/80 text-left block"
+          >
             <div className="flex items-start justify-between mb-4">
-              <div className="w-10 h-10 rounded-lg bg-orange-100 border border-orange-200 flex items-center justify-center">
-                <span className="text-orange-600 text-sm font-bold">DLP</span>
+              <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
+                <span className="text-cyan-600 text-sm font-bold">DLP</span>
               </div>
-              <span className="text-xs text-orange-600 border border-orange-200 rounded px-2 py-0.5 font-medium">Platform 02</span>
+              <span className="text-xs text-cyan-600 border border-cyan-500/20 rounded px-2 py-0.5 font-medium">Lens</span>
             </div>
             <h3 className="text-slate-900 font-semibold text-base mb-2">AI DLP</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               AI-powered data loss prevention. Detect, classify, and prevent sensitive data exfiltration across cloud, endpoint, and network in real time.
             </p>
-            <div className="mt-4 flex items-center gap-1.5 text-orange-600 text-xs font-medium group-hover:gap-2.5 transition-all duration-200">
+            <div className="mt-4 flex items-center gap-1.5 text-cyan-600 text-xs font-medium group-hover:gap-2.5 transition-all duration-200">
               Learn more <ArrowRight className="w-3 h-3" />
             </div>
-          </div>
+          </a>
         </motion.div>
       </div>
 

@@ -22,7 +22,7 @@ const aiDlpFeatures = [
 
 const platforms = [
   {
-    id: "one-evidence",
+    id: "track",
     name: "One Evidence",
     tagline: "Your single source of compliance truth",
     description:
@@ -37,13 +37,13 @@ const platforms = [
     ],
   },
   {
-    id: "ai-dlp",
+    id: "lens",
     name: "AI DLP",
     tagline: "Stop data loss before it happens",
     description:
       "AI DLP uses machine learning to classify, monitor, and protect sensitive data wherever it lives or moves — cloud, email, endpoint, or network — enforcing policies in real time without disrupting legitimate workflows.",
     features: aiDlpFeatures,
-    accent: "orange",
+    accent: "cyan",
     architecture: [
       { label: "Data Sources", items: ["Email", "Cloud Storage", "Endpoints", "Network"] },
       { label: "AI Classification", items: ["Detect", "Classify", "Score Risk", "Label"] },
@@ -59,8 +59,8 @@ export default function Platforms() {
 
   return (
     <Layout>
-      <section className="pt-24 pb-16 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto" ref={ref}>
+      <section className="section-pad pt-28">
+        <div className="container-cf" ref={ref}>
           <div className="mb-16">
             <SectionHeading
               eyebrow="Our Platforms"
@@ -79,15 +79,16 @@ export default function Platforms() {
             {platforms.map((platform, idx) => (
               <motion.div
                 key={platform.id}
+                id={platform.id}
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center scroll-mt-24"
               >
                 <div className={idx % 2 === 1 ? "lg:order-2" : ""}>
                   <span
                     className={`inline-block text-xs font-semibold tracking-widest uppercase mb-3 ${
-                      platform.accent === "blue" ? "text-blue-600" : "text-orange-600"
+                      platform.accent === "blue" ? "text-blue-600" : "text-cyan-600"
                     }`}
                   >
                     {platform.name}
@@ -101,7 +102,7 @@ export default function Platforms() {
                       <li key={f} className="flex items-start gap-3 text-slate-700 text-sm">
                         <CheckCircle2
                           className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                            platform.accent === "blue" ? "text-blue-600" : "text-orange-600"
+                            platform.accent === "blue" ? "text-blue-600" : "text-cyan-600"
                           }`}
                         />
                         {f}
@@ -113,22 +114,22 @@ export default function Platforms() {
                     className={`inline-flex items-center gap-2 px-5 py-2.5 text-white font-medium rounded-md text-sm transition-all ${
                       platform.accent === "blue"
                         ? "bg-blue-600 hover:bg-blue-500"
-                        : "bg-orange-600 hover:bg-orange-500"
+                        : "bg-cyan-600 hover:bg-cyan-500"
                     }`}
                   >
                     Request a Demo <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
                 <div
-                  className={`p-8 rounded-2xl border bg-white shadow-sm ${
+                  className={`card-cf p-8 rounded-2xl border bg-white shadow-sm ${
                     idx % 2 === 1 ? "lg:order-1" : ""
                   } ${
-                    platform.accent === "blue" ? "border-blue-200" : "border-orange-200"
+                    platform.accent === "blue" ? "border-blue-200" : "border-cyan-200"
                   }`}
                 >
                   <div
                     className={`text-xs font-semibold tracking-widest uppercase mb-5 ${
-                      platform.accent === "blue" ? "text-blue-600" : "text-orange-600"
+                      platform.accent === "blue" ? "text-blue-600" : "text-cyan-600"
                     }`}
                   >
                     {platform.name} Architecture
@@ -138,7 +139,7 @@ export default function Platforms() {
                       <div key={layer.label}>
                         <div
                           className={`rounded-lg p-3 ${
-                            platform.accent === "blue" ? "bg-blue-50" : "bg-orange-50"
+                            platform.accent === "blue" ? "bg-blue-50" : "bg-cyan-50"
                           }`}
                         >
                           <div className="text-xs text-slate-500 mb-2 font-medium">{layer.label}</div>
@@ -164,6 +165,29 @@ export default function Platforms() {
                 </div>
               </motion.div>
             ))}
+
+          <motion.div
+            id="architecture"
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="scroll-mt-24 pt-16 border-t border-slate-200"
+          >
+            <h3 className="text-slate-900 font-bold text-xl mb-6">Architecture Overview</h3>
+            <p className="text-slate-600 text-sm leading-relaxed max-w-2xl mb-8">
+              Both platforms are cloud-native, built on AWS, and designed for data sovereignty. One Evidence focuses on evidence aggregation and compliance mapping; AI DLP on classification and policy enforcement. They can be deployed independently or together for a unified security posture.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="card-cf p-6 rounded-xl border border-blue-200 bg-blue-50/50">
+                <div className="text-blue-600 text-xs font-semibold tracking-widest uppercase mb-2">Track (One Evidence)</div>
+                <p className="text-slate-700 text-sm">Evidence → Collection → Mapping → Audit. Single pipeline for compliance intelligence.</p>
+              </div>
+              <div className="card-cf p-6 rounded-xl border border-cyan-200 bg-cyan-50/50">
+                <div className="text-cyan-600 text-xs font-semibold tracking-widest uppercase mb-2">Lens (AI DLP)</div>
+                <p className="text-slate-700 text-sm">Data → Classification → Policy → Response. Real-time data loss prevention.</p>
+              </div>
+            </div>
+          </motion.div>
           </div>
         </div>
       </section>

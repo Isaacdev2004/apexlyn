@@ -54,7 +54,7 @@ export default function Benefits() {
     <section id="solutions" className="py-24 relative overflow-hidden bg-white">
       <div className="divider-gradient absolute top-0 left-0 right-0" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
+      <div className="relative container-cf" ref={ref}>
         <div className="max-w-2xl mb-14">
           <SectionHeading
             eyebrow="Why APEXLyn"
@@ -80,8 +80,7 @@ export default function Benefits() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -3 }}
-                className="p-6 rounded-xl border border-slate-200 bg-slate-50 transition-all duration-300 shadow-sm"
+                className="card-cf p-6 rounded-xl border border-slate-200 bg-slate-50 shadow-sm"
               >
                 <div className={`w-10 h-10 rounded-lg ${colors.bg} border ${colors.border} flex items-center justify-center mb-4`}>
                   <Icon className={`w-4.5 h-4.5 ${colors.text}`} strokeWidth={1.8} />

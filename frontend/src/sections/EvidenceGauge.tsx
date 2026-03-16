@@ -34,11 +34,11 @@ export default function EvidenceGauge() {
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-80px" });
 
   return (
-    <section id="trust" className="py-24 relative overflow-hidden bg-white">
+    <section id="trust" className="section-pad relative overflow-hidden bg-white">
       <div className="absolute inset-0 grid-bg opacity-40" />
       <div className="divider-gradient absolute top-0 left-0 right-0" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8" ref={ref}>
+      <div className="relative container-cf" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <SectionHeading
@@ -64,7 +64,7 @@ export default function EvidenceGauge() {
               {certifications.map((cert) => (
                 <div
                   key={cert.name}
-                  className="p-4 rounded-lg border border-slate-200 bg-slate-50 flex flex-col gap-1"
+                  className="card-cf p-4 rounded-lg border border-slate-200 bg-slate-50 flex flex-col gap-1"
                 >
                   <div className="flex items-center gap-1.5">
                     <div className="w-2 h-2 bg-green-500 rounded-full" />
@@ -76,12 +76,11 @@ export default function EvidenceGauge() {
             </motion.div>
 
             <motion.a
-              href="#"
+              href="/trust"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.35 }}
-              whileHover={{ scale: 1.03 }}
-              className="mt-8 inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors"
+              className="link-cf mt-8 inline-flex items-center gap-2 text-primary hover:opacity-90 text-sm font-medium transition-colors"
             >
               Visit Trust Center →
             </motion.a>
@@ -100,7 +99,7 @@ export default function EvidenceGauge() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, delay: 0.25 + i * 0.12 }}
-                className="p-6 rounded-xl border border-slate-200 bg-slate-50 flex items-center gap-6"
+                className="card-cf p-6 rounded-xl border border-slate-200 bg-slate-50 flex items-center gap-6"
               >
                 <div className="flex-shrink-0">
                   <Gauge value={m.value} label="" />
