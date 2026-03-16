@@ -78,7 +78,38 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* Plans: distinct section block */}
+      {/* Compare strip: distinct layout */}
+      <section className="section-pad section-grid bg-white">
+        <div className="container-cf">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, ease: easeSmooth }}
+            className="text-slate-600 text-sm font-medium mb-6 text-center"
+          >
+            Compare at a glance
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.08, ease: easeSmooth }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12"
+          >
+            {["One Evidence", "AI DLP", "Platform Bundle"].map((name, i) => (
+              <div key={name} className="p-4 rounded-xl border border-slate-200 bg-white/80 text-center">
+                <div className="text-slate-900 font-semibold text-sm mb-2">{name}</div>
+                <div className="text-slate-500 text-xs">
+                  {i === 0 && "Frameworks · Connectors · Audit"}
+                  {i === 1 && "Classification · Policy · Response"}
+                  {i === 2 && "Unified · Volume discounts · SLA"}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Plans */}
       <section className="section-pad section-alt">
         <div className="container-cf">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">

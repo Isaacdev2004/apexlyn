@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { BookOpen, FileText, Code, Activity, Search } from "lucide-react";
 import ResourcesLineArt from "@/illustrations/ResourcesLineArt";
@@ -6,33 +6,40 @@ import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { easeSmooth } from "@/lib/animations";
 
+const categories = ["All", "Documentation", "Research", "API", "Operations"] as const;
+
 const resources = [
   {
     icon: BookOpen,
+    category: "Documentation" as const,
     title: "Documentation",
     description: "Setup guides, API reference, and best practices for One Evidence and AI DLP.",
     link: "#",
   },
   {
     icon: FileText,
+    category: "Documentation" as const,
     title: "Whitepapers",
     description: "Deep dives on compliance automation, DLP architecture, and regulatory mapping.",
     link: "#",
   },
   {
     icon: Search,
+    category: "Research" as const,
     title: "Security Research",
     description: "Threat intelligence, vulnerability disclosures, and security advisories.",
     link: "#",
   },
   {
     icon: Code,
+    category: "API" as const,
     title: "API Reference",
     description: "REST and SDK documentation for integration and automation.",
     link: "#",
   },
   {
     icon: Activity,
+    category: "Operations" as const,
     title: "Status Page",
     description: "Real-time service health, incidents, and scheduled maintenance.",
     link: "#",
@@ -42,6 +49,8 @@ const resources = [
 export default function Resources() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+  const filtered = activeCategory === "All" ? resources : resources.filter((r) => r.category === activeCategory);
 
   return (
     <Layout>
@@ -74,11 +83,32 @@ export default function Resources() {
         </div>
       </section>
 
-      {/* Resource cards: distinct section */}
+      {/* Resource hub: category tabs + cards */}
       <section className="section-pad section-alt">
         <div className="container-cf">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, ease: easeSmooth }}
+            className="flex flex-wrap gap-2 mb-8"
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setActiveCategory(cat)}
+                className={`btn-cf px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                  activeCategory === cat
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-white border border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {resources.map((resource, i) => {
+            {filtered.map((resource, i) => {
               const Icon = resource.icon;
               return (
                 <motion.a

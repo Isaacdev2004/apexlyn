@@ -186,6 +186,17 @@
   .section-subtle {
     background-color: hsl(var(--primary) / 0.03);
   }
+  /* Grid-only section (texture variation) */
+  .section-grid {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  /* Very light gradient band */
+  .section-gradient {
+    background: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(var(--primary) / 0.02) 50%, hsl(210 40% 98%) 100%);
+  }
 
   .logo-on-light {
     filter: invert(1) brightness(0);

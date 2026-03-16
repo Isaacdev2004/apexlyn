@@ -1,15 +1,17 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-/** Pricing: tier bars / scale. Calm line-art, primary only. */
+const ease = [0.22, 1, 0.36, 1] as const;
+
+/** Pricing: three tiers with base line and ascending steps. Primary only. */
 export default function PricingLineArt({ className = "" }: { className?: string }) {
   const ref = useRef<SVGSVGElement>(null);
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-40px" });
 
-  const bars = [
-    { y: 80, w: 50 },
-    { y: 110, w: 90 },
-    { y: 140, w: 130 },
+  const tiers = [
+    { x: 40, y: 120, w: 36, h: 50 },
+    { x: 82, y: 85, w: 36, h: 85 },
+    { x: 124, y: 50, w: 36, h: 120 },
   ];
 
   return (
@@ -21,38 +23,51 @@ export default function PricingLineArt({ className = "" }: { className?: string 
       className={`text-primary ${className}`}
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, ease }}
     >
-      <motion.rect
-        x="35"
-        y="50"
-        width="130"
-        height="120"
-        rx="4"
+      {/* Base line */}
+      <motion.line
+        x1="35"
+        y1="170"
+        x2="165"
+        y2="170"
         stroke="currentColor"
         strokeWidth="1.5"
-        fill="none"
-        opacity={0.25}
+        opacity={0.35}
         initial={{ pathLength: 0 }}
-        animate={inView ? { opacity: 0.25 } : {}}
-        transition={{ duration: 0.4 }}
+        animate={inView ? { pathLength: 1 } : {}}
+        transition={{ duration: 0.4, ease }}
       />
-      {bars.map((b, i) => (
+      {/* Tier blocks */}
+      {tiers.map((t, i) => (
         <motion.rect
           key={i}
-          x="50"
-          y={b.y}
-          width={b.w}
-          height="18"
-          rx="2"
+          x={t.x}
+          y={t.y}
+          width={t.w}
+          height={t.h}
+          rx="4"
           stroke="currentColor"
           strokeWidth="2"
           fill="none"
+          opacity={0.5 + i * 0.2}
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.45, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+          animate={inView ? { opacity: 0.5 + i * 0.2 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 + i * 0.12, ease }}
         />
       ))}
+      {/* Cap/arrow on top tier */}
+      <motion.path
+        d="M142 50 L158 50 L150 38 L142 50"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+        fill="none"
+        opacity={0.7}
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 0.7 } : {}}
+        transition={{ duration: 0.3, delay: 0.5, ease }}
+      />
     </motion.svg>
   );
 }

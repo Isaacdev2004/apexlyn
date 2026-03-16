@@ -31,7 +31,7 @@ const certifications = [
 
 export default function EvidenceGauge() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-80px" });
+  const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
     <section id="trust" className="section-pad relative overflow-hidden bg-white">

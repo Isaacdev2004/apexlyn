@@ -1,16 +1,18 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-/** Resources: stacked docs / layers. Calm line-art, primary only. */
+const ease = [0.22, 1, 0.36, 1] as const;
+
+/** Resources: stacked docs + open book hint. Layered, primary only. */
 export default function ResourcesLineArt({ className = "" }: { className?: string }) {
   const ref = useRef<SVGSVGElement>(null);
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-40px" });
 
   const docs = [
-    { y: 70, w: 100 },
-    { y: 90, w: 110 },
-    { y: 110, w: 95 },
-    { y: 130, w: 105 },
+    { y: 72, w: 88 },
+    { y: 94, w: 98 },
+    { y: 116, w: 92 },
+    { y: 138, w: 102 },
   ];
 
   return (
@@ -22,35 +24,38 @@ export default function ResourcesLineArt({ className = "" }: { className?: strin
       className={`text-primary ${className}`}
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, ease }}
     >
+      {/* Stacked docs */}
       {docs.map((d, i) => (
         <motion.rect
           key={i}
-          x={120 - d.w / 2}
+          x={106 - d.w / 2}
           y={d.y}
           width={d.w}
-          height="22"
+          height="20"
           rx="2"
           stroke="currentColor"
           strokeWidth="1.5"
           fill="none"
-          opacity={0.4 + (i * 0.15)}
+          opacity={0.35 + i * 0.18}
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 0.4 + (i * 0.15) } : {}}
-          transition={{ duration: 0.4, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+          animate={inView ? { opacity: 0.35 + i * 0.18 } : {}}
+          transition={{ duration: 0.4, delay: i * 0.08, ease }}
         />
       ))}
+      {/* Book/spine icon left */}
       <motion.path
-        d="M60 75 L60 145 M75 85 L95 85 M75 95 L90 95"
+        d="M52 70 L52 130 M52 70 Q68 70 68 100 Q68 130 52 130 M68 100 L84 100"
         stroke="currentColor"
-        strokeWidth="1.5"
+        strokeWidth="1.8"
         strokeLinecap="round"
+        strokeLinejoin="round"
         fill="none"
-        opacity={0.6}
+        opacity={0.7}
         initial={{ pathLength: 0 }}
         animate={inView ? { pathLength: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.5, delay: 0.25, ease }}
       />
     </motion.svg>
   );

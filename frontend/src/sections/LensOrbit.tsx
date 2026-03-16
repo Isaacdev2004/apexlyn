@@ -173,11 +173,11 @@ export default function LensOrbit() {
             inView={inView}
             delay={0.2}
             colorClasses={{
-              text: "text-blue-600",
-              check: "text-blue-600",
-              border: "border-blue-200",
-              button: "bg-blue-600 hover:bg-blue-500",
-              layerBg: "bg-blue-50",
+              text: "text-primary",
+              check: "text-primary",
+              border: "border-primary/20",
+              button: "bg-primary hover:opacity-90",
+              layerBg: "bg-primary/5",
             }}
           />
           <ProductSection

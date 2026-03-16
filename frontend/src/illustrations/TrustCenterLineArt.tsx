@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-/** Trust Center: shield + checkmarks line-art. Calm, APEXLyn style. Primary only. */
+const ease = [0.22, 1, 0.36, 1] as const;
+
+/** Trust Center: shield + badge frame + checkmarks. Layered, calm, primary only. */
 export default function TrustCenterLineArt({ className = "" }: { className?: string }) {
   const ref = useRef<SVGSVGElement>(null);
   const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-40px" });
@@ -15,20 +17,37 @@ export default function TrustCenterLineArt({ className = "" }: { className?: str
       className={`text-primary ${className}`}
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, ease }}
     >
-      <motion.path
-        d="M100 32 L160 52 L160 100 Q160 140 100 168 Q40 140 40 100 L40 52 Z"
+      {/* Outer badge frame */}
+      <motion.rect
+        x="28"
+        y="24"
+        width="144"
+        height="152"
+        rx="12"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1.5"
+        fill="none"
+        opacity={0.2}
+        initial={{ pathLength: 0 }}
+        animate={inView ? { pathLength: 1 } : {}}
+        transition={{ duration: 0.6, ease }}
+      />
+      {/* Shield */}
+      <motion.path
+        d="M100 44 L168 68 L168 102 Q168 148 100 176 Q32 148 32 102 L32 68 Z"
+        stroke="currentColor"
+        strokeWidth="2.5"
         strokeLinejoin="round"
         fill="none"
         initial={{ pathLength: 0 }}
         animate={inView ? { pathLength: 1 } : {}}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, delay: 0.1, ease }}
       />
+      {/* Check 1 */}
       <motion.path
-        d="M72 98 L92 118 L128 82"
+        d="M72 98 L88 114 L128 74"
         stroke="currentColor"
         strokeWidth="2.5"
         strokeLinecap="round"
@@ -36,19 +55,20 @@ export default function TrustCenterLineArt({ className = "" }: { className?: str
         fill="none"
         initial={{ pathLength: 0 }}
         animate={inView ? { pathLength: 1 } : {}}
-        transition={{ duration: 0.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.35, delay: 0.4, ease }}
       />
+      {/* Check 2 */}
       <motion.path
-        d="M72 118 L92 138 L128 102"
+        d="M72 122 L88 138 L128 98"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
-        opacity={0.7}
+        opacity={0.85}
         initial={{ pathLength: 0 }}
         animate={inView ? { pathLength: 1 } : {}}
-        transition={{ duration: 0.4, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.35, delay: 0.5, ease }}
       />
     </motion.svg>
   );

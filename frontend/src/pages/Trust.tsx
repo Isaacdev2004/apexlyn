@@ -4,7 +4,7 @@ import Gauge from "@/illustrations/Gauge";
 import TrustCenterLineArt from "@/illustrations/TrustCenterLineArt";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
-import { easeSmooth } from "@/lib/animations";
+import { easeSmooth, REVEAL_DURATION } from "@/lib/animations";
 
 const metrics = [
   { value: 94, label: "Compliance Coverage Score", description: "Across all supported regulatory frameworks." },
@@ -22,11 +22,11 @@ const certifications = [
 
 export default function Trust() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-80px" });
+  const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-60px" });
 
   return (
     <Layout>
-      {/* Intro: distinct block, white */}
+      {/* Intro + illustration */}
       <section className="section-pad pt-28 pb-12 bg-white">
         <div className="container-cf" ref={ref}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
@@ -47,7 +47,7 @@ export default function Trust() {
               className="flex justify-center lg:justify-end"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.2, ease: easeSmooth }}
+              transition={{ duration: REVEAL_DURATION, delay: 0.2, ease: easeSmooth }}
             >
               <TrustCenterLineArt className="w-48 h-48 lg:w-56 lg:h-56" />
             </motion.div>
@@ -55,9 +55,35 @@ export default function Trust() {
         </div>
       </section>
 
-      {/* Certifications + Metrics: alternating section */}
+      {/* Dashboard-style: KPI row first */}
       <section className="section-pad section-alt">
         <div className="container-cf">
+          <motion.h3
+            initial={{ opacity: 0, y: 12 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: REVEAL_DURATION, ease: easeSmooth }}
+            className="text-slate-900 font-semibold text-lg mb-8"
+          >
+            Key metrics
+          </motion.h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+            {metrics.map((m, i) => (
+              <motion.div
+                key={m.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: REVEAL_DURATION, delay: i * 0.08, ease: easeSmooth }}
+                className="card-cf p-8 rounded-2xl border border-slate-200 bg-white shadow-sm text-center"
+              >
+                <div className="flex justify-center mb-4">
+                  <Gauge value={m.value} label="" />
+                </div>
+                <div className="text-slate-900 font-semibold text-base mb-1">{m.label}</div>
+                <p className="text-slate-600 text-sm leading-relaxed">{m.description}</p>
+              </motion.div>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-16">
             <div>
               <h3 className="text-slate-900 font-semibold text-lg mb-6">Certifications & Compliance</h3>
@@ -67,7 +93,7 @@ export default function Trust() {
                     key={cert.name}
                     initial={{ opacity: 0, y: 12 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: i * 0.06, ease: easeSmooth }}
+                    transition={{ duration: REVEAL_DURATION, delay: 0.2 + i * 0.06, ease: easeSmooth }}
                     className="card-cf p-4 rounded-lg border border-slate-200 bg-white shadow-sm"
                   >
                     <div className="flex items-center gap-2 mb-1">
@@ -80,45 +106,22 @@ export default function Trust() {
                 ))}
               </div>
             </div>
-            <div>
-              <h3 className="text-slate-900 font-semibold text-lg mb-6">Key Metrics</h3>
-              <div className="space-y-6">
-                {metrics.map((m, i) => (
-                  <motion.div
-                    key={m.label}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: i * 0.1, ease: easeSmooth }}
-                    className="card-cf p-6 rounded-xl border border-slate-200 bg-white shadow-sm flex items-center gap-6"
-                  >
-                    <div className="flex-shrink-0">
-                      <Gauge value={m.value} label="" />
-                    </div>
-                    <div>
-                      <div className="text-slate-900 font-semibold text-sm mb-1">{m.label}</div>
-                      <p className="text-slate-600 text-xs leading-relaxed">{m.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.25, duration: REVEAL_DURATION, ease: easeSmooth }}
+              className="card-cf p-8 rounded-2xl border border-slate-200 bg-white shadow-sm"
+            >
+              <h3 className="text-slate-900 font-semibold text-lg mb-4">Security & Privacy</h3>
+              <ul className="space-y-2 text-slate-600 text-sm">
+                <li>• Encryption in transit (TLS 1.3) and at rest (AES-256)</li>
+                <li>• Role-based access control and SSO (SAML 2.0, OIDC)</li>
+                <li>• No customer data used for model training</li>
+                <li>• Incident response and breach notification procedures</li>
+                <li>• Transparent status and uptime reporting</li>
+              </ul>
+            </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.3, duration: 0.5, ease: easeSmooth }}
-            className="card-cf p-8 rounded-2xl border border-slate-200 bg-white shadow-sm"
-          >
-            <h3 className="text-slate-900 font-semibold text-lg mb-4">Security & Privacy</h3>
-            <ul className="space-y-2 text-slate-600 text-sm">
-              <li>• Encryption in transit (TLS 1.3) and at rest (AES-256)</li>
-              <li>• Role-based access control and SSO (SAML 2.0, OIDC)</li>
-              <li>• No customer data used for model training</li>
-              <li>• Incident response and breach notification procedures</li>
-              <li>• Transparent status and uptime reporting</li>
-            </ul>
-          </motion.div>
         </div>
       </section>
     </Layout>

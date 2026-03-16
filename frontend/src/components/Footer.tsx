@@ -61,7 +61,7 @@ export default function Footer() {
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      className="link-cf text-slate-600 hover:text-slate-900 text-sm transition-colors duration-150"
+                      className="link-cf text-slate-600 hover:text-slate-900 text-sm transition-colors duration-200"
                     >
                       {item.label}
                     </a>
@@ -84,7 +84,7 @@ export default function Footer() {
               { label: "Trust Center", href: "/trust" },
               { label: "Cookie Policy", href: "/company" },
             ].map((item) => (
-              <a key={item.label} href={item.href} className="link-cf text-slate-500 hover:text-slate-700 text-xs transition-colors">
+              <a key={item.label} href={item.href} className="link-cf text-slate-500 hover:text-slate-700 text-xs transition-colors duration-200">
                 {item.label}
               </a>
             ))}
