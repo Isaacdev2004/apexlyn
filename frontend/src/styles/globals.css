@@ -181,13 +181,32 @@
     filter: invert(1) brightness(0);
   }
 
-  /* Legacy alias */
+  /* Legacy alias for old markup using underline-animate */
   .underline-animate {
-    @apply link-cf;
+    position: relative;
+  }
+  .underline-animate::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: hsl(var(--primary));
+    transition: width 0.22s ease;
+  }
+  .underline-animate:hover::after {
+    width: 100%;
   }
 
   .card-hover {
-    @apply card-cf;
+    /* kept for backwards compatibility; card-cf is the canonical utility */
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(59, 130, 246, 0.12);
+    border-color: hsl(var(--border));
   }
 
   .divider-gradient {
