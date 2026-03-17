@@ -35,10 +35,10 @@ const benefits = [
 ];
 
 const colorMap: Record<string, { bg: string; text: string; border: string }> = {
-  blue: { bg: "bg-blue-500/10", text: "text-blue-400", border: "border-blue-500/20" },
-  green: { bg: "bg-green-600/10", text: "text-green-400", border: "border-green-600/20" },
-  orange: { bg: "bg-orange-500/10", text: "text-orange-400", border: "border-orange-500/20" },
-  gold: { bg: "bg-yellow-500/10", text: "text-yellow-400", border: "border-yellow-500/20" },
+  blue: { bg: "bg-primary/10", text: "text-primary", border: "border-primary/20" },
+  green: { bg: "bg-green-600/10", text: "text-green-600", border: "border-green-600/20" },
+  orange: { bg: "bg-orange-500/10", text: "text-orange-600", border: "border-orange-500/20" },
+  gold: { bg: "bg-amber-500/10", text: "text-amber-600", border: "border-amber-500/20" },
 };
 
 const industries = [

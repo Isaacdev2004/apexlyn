@@ -55,11 +55,11 @@ const features = [
 ];
 
 const colorMap: Record<string, { bg: string; border: string; icon: string }> = {
-  blue: { bg: "bg-blue-500/10", border: "border-blue-500/20", icon: "text-blue-400" },
-  orange: { bg: "bg-orange-500/10", border: "border-orange-500/20", icon: "text-orange-400" },
-  red: { bg: "bg-red-500/10", border: "border-red-500/20", icon: "text-red-400" },
-  green: { bg: "bg-green-600/10", border: "border-green-600/20", icon: "text-green-400" },
-  gold: { bg: "bg-yellow-500/10", border: "border-yellow-500/20", icon: "text-yellow-400" },
+  blue: { bg: "bg-primary/10", border: "border-primary/20", icon: "text-primary" },
+  orange: { bg: "bg-orange-500/10", border: "border-orange-500/20", icon: "text-orange-600" },
+  red: { bg: "bg-red-500/10", border: "border-red-500/20", icon: "text-red-600" },
+  green: { bg: "bg-green-600/10", border: "border-green-600/20", icon: "text-green-600" },
+  gold: { bg: "bg-amber-500/10", border: "border-amber-500/20", icon: "text-amber-600" },
 };
 
 function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
