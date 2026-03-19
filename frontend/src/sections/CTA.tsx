@@ -41,8 +41,8 @@ export default function CTA() {
                 { icon: Mail, text: "No spam. Secure, encrypted communications only." },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-start gap-3">
-                  <div className="w-7 h-7 rounded-md bg-blue-100 border border-blue-200 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon className="w-3.5 h-3.5 text-blue-600" strokeWidth={1.8} />
+                  <div className="w-7 h-7 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon className="w-3.5 h-3.5 text-primary" strokeWidth={1.8} />
                   </div>
                   <span className="text-slate-600 text-sm">{text}</span>
                 </div>
@@ -74,7 +74,7 @@ export default function CTA() {
                   <input
                     type="text"
                     placeholder="Jane Smith"
-                    className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                    className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                   />
                 </div>
                 <div>
@@ -82,7 +82,7 @@ export default function CTA() {
                   <input
                     type="text"
                     placeholder="Acme Corp"
-                    className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                    className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                   />
                 </div>
               </div>
@@ -91,13 +91,13 @@ export default function CTA() {
                 <input
                   type="email"
                   placeholder="jane@company.com"
-                  className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                  className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                 />
                 <p className="text-xs text-slate-500 mt-1">Corporate emails only — we prioritize verified organizations.</p>
               </div>
               <div>
                 <label className="block text-xs text-slate-600 mb-1.5">Industry</label>
-                <select className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-700 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
+                <select className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-700 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
                   <option value="">Select industry</option>
                   <option>Healthcare</option>
                   <option>Legal & Compliance</option>
@@ -110,7 +110,7 @@ export default function CTA() {
               </div>
               <div>
                 <label className="block text-xs text-slate-600 mb-1.5">Platform of Interest</label>
-                <select className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-700 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors">
+                <select className="w-full px-3 py-2.5 rounded-md border border-slate-200 bg-white text-slate-700 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
                   <option value="">Select platform</option>
                   <option>One Evidence</option>
                   <option>AI DLP</option>
