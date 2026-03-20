@@ -91,7 +91,7 @@ function ProductSection({
         className={`card-cf ${reversed ? "lg:order-1" : ""} p-8 rounded-2xl border ${colorClasses.border} bg-white shadow-sm`}
       >
         {showLensGlobe && (
-          <div className="mb-6 p-3 rounded-xl border border-cyan-200/70 bg-cyan-50/50">
+          <div className="mb-7 p-2 sm:p-3 rounded-2xl border border-cyan-200/80 bg-cyan-50/60 shadow-[0_14px_40px_rgba(14,165,233,0.12)]">
             <LensOrbitGlobe />
           </div>
         )}

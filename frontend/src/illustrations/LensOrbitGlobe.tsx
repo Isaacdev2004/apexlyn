@@ -88,23 +88,23 @@ export default function LensOrbitGlobe() {
 
   const screenPoints = points.map((p) => project(rotateY(p, rot), cx, cy));
 
-  const cyan = "rgba(14, 165, 233, 0.62)";
-  const cyanSoft = "rgba(14, 165, 233, 0.2)";
-  const cyanGlow = "rgba(14, 165, 233, 0.12)";
+  const cyan = "rgba(14, 165, 233, 0.78)";
+  const cyanSoft = "rgba(14, 165, 233, 0.3)";
+  const cyanGlow = "rgba(14, 165, 233, 0.2)";
 
   return (
-    <div ref={ref} className="flex items-center justify-center">
+    <div ref={ref} className="flex items-center justify-center py-1">
       <svg
         width="400"
         height="400"
         viewBox="0 0 400 400"
-        className="w-full max-w-sm overflow-visible"
+        className="w-full max-w-md lg:max-w-lg overflow-visible"
         aria-label="Lens network globe"
       >
         <defs>
           <radialGradient id="lensGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(14,165,233,0.2)" />
-            <stop offset="75%" stopColor="rgba(14,165,233,0.06)" />
+            <stop offset="0%" stopColor="rgba(14,165,233,0.28)" />
+            <stop offset="75%" stopColor="rgba(14,165,233,0.1)" />
             <stop offset="100%" stopColor="rgba(14,165,233,0)" />
           </radialGradient>
           <clipPath id="lensClip">
@@ -166,7 +166,7 @@ export default function LensOrbitGlobe() {
         })}
 
         {screenPoints.map((p, i) => {
-          const alpha = Math.max(0.18, Math.min(0.86, 0.55 + p.z / 140));
+          const alpha = Math.max(0.24, Math.min(0.92, 0.6 + p.z / 130));
           return <circle key={`n-${i}`} cx={p.x} cy={p.y} r={1.25 * p.s} fill={cyanGlow} opacity={alpha} />;
         })}
       </svg>
