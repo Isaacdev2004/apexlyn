@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
+import LensOrbitGlobe from "@/illustrations/LensOrbitGlobe";
 
 const oneEvidenceFeatures = [
   "Single pane of glass for all compliance evidence",
@@ -35,6 +36,7 @@ interface ProductSectionProps {
   reversed: boolean;
   inView: boolean;
   delay: number;
+  showLensGlobe?: boolean;
 }
 
 function ProductSection({
@@ -47,6 +49,7 @@ function ProductSection({
   reversed,
   inView,
   delay,
+  showLensGlobe = false,
 }: ProductSectionProps) {
   return (
     <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${reversed ? "" : ""}`}>
@@ -87,6 +90,11 @@ function ProductSection({
         transition={{ duration: 0.75, delay: delay + 0.1, ease: [0.22, 1, 0.36, 1] }}
         className={`card-cf ${reversed ? "lg:order-1" : ""} p-8 rounded-2xl border ${colorClasses.border} bg-white shadow-sm`}
       >
+        {showLensGlobe && (
+          <div className="mb-6 p-3 rounded-xl border border-cyan-200/70 bg-cyan-50/50">
+            <LensOrbitGlobe />
+          </div>
+        )}
         <div className={`text-xs font-semibold tracking-widest uppercase mb-5 ${colorClasses.text}`}>
           {platform} Architecture
         </div>
@@ -189,6 +197,7 @@ export default function LensOrbit() {
             reversed={true}
             inView={inView}
             delay={0.25}
+            showLensGlobe
             colorClasses={{
               text: "text-cyan-600",
               check: "text-cyan-600",
