@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Building2, Scale, Heart, Landmark, Shield, Cpu } from "lucide-react";
+import IndustriesLineArt from "@/illustrations/IndustriesLineArt";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { easeSmooth } from "@/lib/animations";
@@ -22,7 +23,7 @@ export default function Industries() {
     <Layout>
       <section className="section-pad pt-28 bg-white">
         <div className="container-cf" ref={ref}>
-          <div className="max-w-2xl mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center mb-16">
             <SectionHeading
               eyebrow="Industries"
               title={
@@ -34,6 +35,11 @@ export default function Industries() {
               description="APEXLyn serves organizations that must prove compliance and protect sensitive data. Our platforms are designed for the regulatory and operational realities of your industry."
               inView={inView}
             />
+            <div className="flex justify-center lg:justify-end">
+              <div className="motif-panel">
+                <IndustriesLineArt className="w-44 h-44 lg:w-52 lg:h-52" />
+              </div>
+            </div>
           </div>
         </div>
       </section>

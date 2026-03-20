@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Mail, MapPin, Users, Handshake, Newspaper } from "lucide-react";
+import CompanyLineArt from "@/illustrations/CompanyLineArt";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import { easeSmooth } from "@/lib/animations";
@@ -21,7 +22,7 @@ export default function Company() {
     <Layout>
       <section className="section-pad pt-28 bg-white">
         <div className="container-cf" ref={ref}>
-          <div className="mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center mb-16">
             <SectionHeading
               eyebrow="Company"
               title={
@@ -32,8 +33,12 @@ export default function Company() {
               }
               description="APEXLyn is headquartered in Sydney, Australia. We serve regulated organizations globally with compliance intelligence and AI-powered data loss prevention."
               inView={inView}
-              center
             />
+            <div className="flex justify-center lg:justify-end">
+              <div className="motif-panel">
+                <CompanyLineArt className="w-44 h-44 lg:w-52 lg:h-52" />
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
