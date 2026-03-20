@@ -1,14 +1,12 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const ease = [0.22, 1, 0.36, 1] as const;
 const STROKE = 2;
-const LOOP_DURATION = 4;
 
 /** Resources: indexed document stack motif (Cloudflare-style technical docs). */
 export default function ResourcesLineArt({ className = "" }: { className?: string }) {
   const ref = useRef<SVGSVGElement>(null);
-  const inView = useInView(ref as React.RefObject<Element>, { once: true, margin: "-40px" });
+  const inView = useInView(ref as React.RefObject<Element>, { once: false, margin: "-40px" });
 
   const docs = [
     { y: 72, w: 88 },
@@ -18,26 +16,14 @@ export default function ResourcesLineArt({ className = "" }: { className?: strin
   ];
 
   return (
-    <motion.svg
+    <svg
       ref={ref}
       viewBox="0 0 200 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`text-primary ${className}`}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1, transition: { duration: 0.5, ease } } : {}}
     >
-      <motion.g
-        animate={
-          inView
-            ? {
-                opacity: [0.97, 1, 0.97],
-                transition: { duration: LOOP_DURATION, repeat: Infinity, ease: "easeInOut" },
-              }
-            : {}
-        }
-      >
-        <motion.rect
+        <rect
           x="24"
           y="24"
           width="152"
@@ -47,15 +33,11 @@ export default function ResourcesLineArt({ className = "" }: { className?: strin
           strokeWidth={STROKE}
           strokeLinecap="round"
           strokeLinejoin="round"
-          fill="none"
           opacity={0.16}
-          initial={{ pathLength: 0 }}
-          animate={inView ? { pathLength: 1 } : {}}
-          transition={{ duration: 0.55, ease }}
         />
 
         {docs.map((d, i) => (
-          <motion.rect
+          <rect
             key={i}
             x={106 - d.w / 2}
             y={d.y}
@@ -66,25 +48,17 @@ export default function ResourcesLineArt({ className = "" }: { className?: strin
             strokeWidth={STROKE}
             strokeLinecap="round"
             strokeLinejoin="round"
-            fill="none"
             opacity={0.35 + i * 0.18}
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 0.35 + i * 0.18 } : {}}
-            transition={{ duration: 0.4, delay: i * 0.08, ease }}
           />
         ))}
 
-        <motion.path
+        <path
           d="M52 70 L52 130 M52 70 Q68 70 68 100 Q68 130 52 130 M68 100 L84 100"
           stroke="currentColor"
           strokeWidth={STROKE}
           strokeLinecap="round"
           strokeLinejoin="round"
-          fill="none"
           opacity={0.7}
-          initial={{ pathLength: 0 }}
-          animate={inView ? { pathLength: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.25, ease }}
         />
 
         <motion.path
@@ -93,29 +67,35 @@ export default function ResourcesLineArt({ className = "" }: { className?: strin
           strokeWidth={STROKE}
           strokeLinecap="round"
           strokeLinejoin="round"
-          fill="none"
           opacity={0.38}
-          initial={{ pathLength: 0 }}
-          animate={inView ? { pathLength: 1 } : {}}
-          transition={{ duration: 0.58, delay: 0.22, ease }}
+          strokeDasharray="12 8"
+          animate={inView ? { strokeDashoffset: [0, -30] } : {}}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "linear" }}
         />
 
         {[132, 142, 138, 146].map((x, i) => (
-          <motion.circle
+          <circle
             key={`idx-${i}`}
             cx={x}
             cy={82 + i * 20}
             r="2.5"
             stroke="currentColor"
             strokeWidth={STROKE}
-            fill="none"
             opacity={0.55}
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 0.55 } : {}}
-            transition={{ duration: 0.28, delay: 0.34 + i * 0.05, ease }}
           />
         ))}
-      </motion.g>
-    </motion.svg>
+
+        <motion.rect
+          x="80"
+          y="78"
+          width="72"
+          height="6"
+          rx="3"
+          fill="currentColor"
+          opacity={0.18}
+          animate={inView ? { y: [78, 138, 78] } : {}}
+          transition={{ duration: 2.8, repeat: Infinity, ease: "linear" }}
+        />
+    </svg>
   );
 }

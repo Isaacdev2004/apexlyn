@@ -142,7 +142,13 @@ function ArchLayer({ label, items, color }: { label: string; items: string[]; co
 function ArchArrow() {
   return (
     <div className="flex justify-center">
-      <div className="w-px h-4 bg-slate-200" />
+      <div className="relative w-px h-4 bg-slate-200 overflow-hidden">
+        <motion.span
+          className="absolute left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-slate-400"
+          animate={{ y: [-2, 14] }}
+          transition={{ duration: 1.1, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
     </div>
   );
 }

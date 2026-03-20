@@ -10,8 +10,16 @@ export default function Hero() {
       <div className="absolute inset-0 bg-white" />
       <div className="absolute inset-0 grid-bg" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
+      <motion.div
+        className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"
+        animate={{ x: [-10, 14, -10], y: [0, 10, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px] pointer-events-none"
+        animate={{ x: [12, -10, 12], y: [0, -10, 0], scale: [1, 1.06, 1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+      />
 
       <div className="relative container-cf py-24 w-full">
         <div className="max-w-4xl mx-auto text-center">

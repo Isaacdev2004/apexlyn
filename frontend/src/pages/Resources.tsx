@@ -71,16 +71,11 @@ export default function Resources() {
                 inView={inView}
               />
             </div>
-            <motion.div
-              className="flex justify-center lg:justify-end"
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2, ease: easeSmooth }}
-            >
+            <div className="flex justify-center lg:justify-end">
               <div className="motif-panel">
                 <ResourcesLineArt className="w-44 h-44 lg:w-52 lg:h-52" />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

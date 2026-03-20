@@ -82,27 +82,17 @@ export default function Contact() {
                 </form>
               </motion.div>
             </div>
-            <motion.div
-              className="hidden lg:flex lg:col-span-3 justify-end items-center"
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3, ease: easeSmooth }}
-            >
+            <div className="hidden lg:flex lg:col-span-3 justify-end items-center">
               <div className="motif-panel !w-[16rem] !h-[16rem] lg:!w-[18rem] lg:!h-[18rem]">
                 <ContactLineArt className="w-36 h-36 lg:w-40 lg:h-40" />
               </div>
-            </motion.div>
+            </div>
           </div>
-          <motion.div
-            className="flex lg:hidden justify-center mt-10"
-            initial={{ opacity: 0, y: 8 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.35, ease: easeSmooth }}
-          >
+          <div className="flex lg:hidden justify-center mt-10">
             <div className="motif-panel !w-[14rem] !h-[14rem]">
               <ContactLineArt className="w-32 h-32" />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </Layout>
