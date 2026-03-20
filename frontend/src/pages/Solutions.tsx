@@ -64,11 +64,13 @@ export default function Solutions() {
             </div>
             <motion.div
               className="flex justify-center lg:justify-end"
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2, ease: easeSmooth }}
             >
-              <SolutionsLineArt className="w-48 h-48 lg:w-56 lg:h-56" />
+              <div className="motif-panel">
+                <SolutionsLineArt className="w-44 h-44 lg:w-52 lg:h-52" />
+              </div>
             </motion.div>
           </div>
         </div>

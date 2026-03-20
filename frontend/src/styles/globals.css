@@ -234,4 +234,25 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.25), transparent);
   }
+
+  /* Illustration composition: engineered motif frame */
+  .motif-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18rem;
+    height: 18rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 1rem;
+    background:
+      linear-gradient(180deg, hsl(var(--primary) / 0.04) 0%, transparent 45%),
+      hsl(210 40% 98%);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.06);
+  }
+  @media (min-width: 1024px) {
+    .motif-panel {
+      width: 21rem;
+      height: 21rem;
+    }
+  }
 }
